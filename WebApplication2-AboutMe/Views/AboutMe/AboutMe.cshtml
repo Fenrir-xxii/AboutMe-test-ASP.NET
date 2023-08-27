@@ -1,0 +1,70 @@
+﻿@using WebApplication2_AboutMe.Models;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    // var skills = ViewData["Skills"] as List<string>;
+    // var firstName = ViewData["FirstName"] as string;
+    // var lastName = ViewData["LastName"] as string;
+    // var age = ViewData["Age"] as int?;
+    var info = ViewData["Info"] as PersonInfo;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>AboutMe</title>
+    <link href="/libraries/bootstrap/bootstrap-5.0.2-dist/css/bootstrap.css" rel="stylesheet" />
+    <style>
+        .card {
+            align-items: center;
+            text-align: center;
+            border: 2px solid black;
+            margin: 5px;
+        }
+
+        .d-flex {
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row-mt-5">
+			<div class="col-md-6 d-flex flex-column">
+				<div class="card" style="width: 18rem;">
+					<img class="card-image" src="/local/storage/img/me.jpg" width="100px;" alt="Card image cap">
+					<div class="card-body">
+                        <h5 class="card-title">@info.FirstName @info.LastName</h5>
+                        <p class="card-text">@info.Age years old</p>
+						<div>
+                            @foreach (var skill in info.Skills)
+                            {
+                                <span class="badge bg-success">@skill</span>
+                            }
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="mb-3">
+						<label for="search" class="form-label">Search</label>
+						<input type="text" class="form-control" id="search" placeholder="Type county here..." />
+                        <ul id="search-result"></ul>
+					</div>
+				</div>
+                <div>
+                    <a class="btn btn-outline-success" href="/PersonInfo/Index">Info</a>
+                </div>
+			</div>
+        </div>
+    </div>
+
+
+    <script src="/libraries/bootstrap/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
+    <script src="/libraries/jquery/jquery-3.7.0.js"></script>
+    <script src="/local/js/skills.js"></script>
+
+
+</body>
+</html>
