@@ -15,8 +15,8 @@ app.MapControllerRoute(name: "aboutMe", pattern: "{controller=AboutMe}/{action=A
 app.MapControllerRoute(name: "skills", pattern: "{controller=AboutMe}/{action=Skills}");
 app.MapControllerRoute(name: "personInfo", pattern: "{controller=PersonInfo}/{action=Index}");
 app.MapControllerRoute(name: "personInfo_addSkill", pattern: "{controller=PersonInfo}/{action=AddSkill}");
-app.MapControllerRoute(name: "personInfo_editSkill", pattern: "{controller=PersonInfo}/{action=EditSkill}");
-
+app.MapControllerRoute(name: "personInfo_editSkill", pattern: "{controller=PersonInfo}/{action=EditSkill}/{id}");
+app.MapControllerRoute(name: "personInfo_addLogo", pattern: "{controller=PersonInfo}/{action=SkillsLogo}");
 app.UseStaticFiles();
 
 app.Run();

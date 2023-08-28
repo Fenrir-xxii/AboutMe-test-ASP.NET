@@ -32,11 +32,23 @@
 							</div> *@
 
 							<div class="mb-3">
+								@using System.IO
+								@{
+									var dir = Directory.GetCurrentDirectory();
+									var additionalPath = @"\wwwroot\local\storage\img\";
+									var res = dir + additionalPath;
+								}
+								<p id="pathToFolder" hidden="true">@res</p>
+								@* <div id="fullPath" @Html.TextBoxFor(m=> m.LogoPath)></div> *@
+
 								@Html.LabelFor(m => m.LogoPath, new {@class = "form-label"})
-								@* @Html.TextBoxFor(m => m.LogoPath, new {@class = "form-control", placeholder = "Skill logo path..."}) *@
-								<input type="file" id="logo" name="avatar" accept="image/png, image/jpeg" onchange="getLogoPath()"/>
+								@* <div id="fullPath" @Html.TextBoxFor(m=> m.LogoPath)></div> *@
+								<div id="fullPath"></div>
+								@* @Html.TextBoxFor(m => m.LogoPath, new {@class = "form-control", id="fullPath"}) *@
+								@* @Html.TextBoxFor(m => m.LogoPath, new {@class = "form-control", placeholder = "Skill logo path...", text="1234"}) *@
+								<input type="file" id="logo" name="avatar" accept="image/png, image/jpeg"/>
 								@* @Html.TextBoxFor() *@
-								@Html.ValidationMessageFor(m => m.LogoPath)
+								@* @Html.ValidationMessageFor(m => m.LogoPath) *@
 								
 							</div>
 
@@ -64,29 +76,22 @@
 
     <script src="/bootstrap5/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script src="js/countries.js"></script>
+    <script src="~/local/js/pathToFile.js"></script>
 
-    <script>
+    @* <script>
 		function setLogo(){
 			// let input = document.getElementById("logo").value;
 			let input = document.getElementById("logo").files[0].name;
 			console.log("input", input);
-
 		}
 		function getLogoPath(){
-			// var input = document.getElementById("logo");
-			// var fReader = new FileReader();
-			// let a = fReader.readAsDataURL(input.files[0]);
-			// console.log("a", a);
-			// fReader.onloadend = function (event) {
-			// 	var img = document.getElementById("yourImgTag");
-			// 	img.src = event.target.result;
-			// 	console.log("img.src",img.src);
-			// }
-			let input = document.getElementById("logo").files[0];
+			let input = document.getElementById("logo").files[0].name;
+			let folderPath = document.getElementById("pathToFolder").innerText;
+			let fullPath = folderPath + input;
 			console.log("input", input);
+			console.log("full path", fullPath);
 		}
-	</script>
+	</script> *@
 
 </body>
 </html>

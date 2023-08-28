@@ -3,6 +3,8 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    var filteredSkills = Model.Skills.Where(x => x.Id < 3);
+    
 }
 @model PersonInfo
 
@@ -68,16 +70,17 @@
                                                 </div>
                                             </td>
                                             <td>
-                                                @* <div class="d-flex">
-                                                    <a class="btn btn-outline-primary" href="/Country/Edit/@country.Id">Edit</a>
-                                                    <form method="post" action="/Country/Delete/@country.Id">
+                                                <div class="d-flex">
+                                                    <a class="btn btn-outline-primary" href="/PersonInfo/EditSkill/@skill.Id">Edit</a>
+                                                    @* <form method="post" action="/Country/Delete/@country.Id">
                                                         <button class="btn btn-outline-warning">Delete</button>
-                                                    </form>
-                                                </div> *@
+                                                    </form> *@
+                                                </div>
 
                                             </td>
                                         </tr>
                                     }
+        
                                 </tbody>
                             </table>
 
@@ -85,11 +88,11 @@
                     </div>
                 </div>
                 <div>
-                    <div class="mb-3">
+                    @* <div class="mb-3">
                         <label for="search" class="form-label">Search</label>
-                        <input type="text" class="form-control" id="search" placeholder="Type county here..." />
-                        <ul id="search-result"></ul>
-                    </div>
+                        <input type="text" class="form-control" id="search" placeholder="Type county here..."/>
+
+                    </div> *@
                 </div>
             </div>
         </div>
@@ -98,7 +101,9 @@
 
     <script src="/libraries/bootstrap/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
     <script src="/libraries/jquery/jquery-3.7.0.js"></script>
-    <script src="/local/js/skills.js"></script>
+    @* <script src="/local/js/skills.js"></script> *@
+
+   
 
 
 </body>

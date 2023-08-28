@@ -8,6 +8,7 @@ namespace WebApplication2_AboutMe.Controllers;
 public class PersonInfoController : Controller
 {
 	private readonly PersonInfoService _personInfoService;
+	private string _tempPath;
 	public PersonInfoController(PersonInfoService personInfoService)
 	{
 		_personInfoService = personInfoService;
@@ -25,10 +26,16 @@ public class PersonInfoController : Controller
 	[HttpPost]
 	public IActionResult AddSkill([FromForm] Skill skill)
 	{
+		if (_tempPath !=null &&  _tempPath.Length > 0)
+		{
+			skill.LogoPath = _tempPath;
+			_tempPath = String.Empty;
+		}
 		if (!ModelState.IsValid)
 		{
 			return View(skill);
 		}
+		
 		_personInfoService.Add(skill);
 		_personInfoService.SaveChanges();
 		return RedirectToAction("Index");
@@ -55,4 +62,12 @@ public class PersonInfoController : Controller
         _personInfoService.SaveChanges();
         return RedirectToAction("Index");
     }
+	[HttpPost]
+	public void SkillsLogo([FromBody] SkillSearchForm form)
+	{
+		if (form.Query.Length > 0)
+		{
+			_tempPath = form.Query;
+		}
+	}
 }
