@@ -9,5 +9,5 @@ public class Skill
 	public string Title { get; set; }
 	[Required]
 	public int Level { get; set; }
-	public string LogoPath { get; set; }
+	public string LogoPath { get; set; } = string.Empty;
 }

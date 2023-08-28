@@ -20,10 +20,14 @@
             text-align: center;
             border: 2px solid black;
             margin: 5px;
+            align-self: baseline;
         }
 
         .d-flex {
             align-items: center;
+        }
+        td{
+            vertical-align:middle;
         }
     </style>
 </head>
@@ -31,12 +35,14 @@
     <div class="container">
         <div class="row-mt-5">
             <div class="col-md-6 d-flex flex-column">
-                <div class="card" style="width: 30rem;">
-                    <img class="card-image" src="/local/storage/img/me.jpg" width="100px;" alt="Card image cap">
+                <div class="card" style="width: 70rem;">
+                    <img class="card-image" src="/local/storage/img/me.jpg" width="200px;" alt="Card image cap">
                     <div class="card-body">
-                        <h5 class="card-title">@Model.FirstName @Model.LastName</h5>
-                        <p class="card-text">@Model.Age years old</p>
+                        <h3 class="card-title">@Model.FirstName @Model.LastName</h3>
+                        <h5 class="card-text">@Model.Age years old</h5>
+                        <a class="btn btn-outline-success" href="/PersonInfo/EditPersonalData">Edit personal data</a>
                         <a class="btn btn-outline-primary mt-5 mb-5" href="/PersonInfo/AddSkill">Add Skill</a>
+                        <a class="btn btn-outline-info mt-5 mb-5" href="/AboutMe/AboutMe">Return</a>
                        @*  <div>
                             @foreach (var skill in Model.Skills)
                             {
@@ -60,7 +66,7 @@
                                     {
                                         <tr>
                                             <td>
-                                                <img src="@skill.LogoPath" width="30px">
+                                                <img src="@skill.LogoPath" width="50px">
                                             </td>
                                             <td>@skill.Title</td>
                                             <td>
@@ -71,10 +77,10 @@
                                             </td>
                                             <td>
                                                 <div class="d-flex">
-                                                    <a class="btn btn-outline-primary" href="/PersonInfo/EditSkill/@skill.Id">Edit</a>
-                                                    @* <form method="post" action="/Country/Delete/@country.Id">
+                                                    <a class="btn btn-outline-primary" href="/PersonInfo/EditSkill/@skill.Id">Edit</a>&nbsp;
+                                                    <form method="post" action="/PersonInfo/DeleteSkill/@skill.Id">
                                                         <button class="btn btn-outline-warning">Delete</button>
-                                                    </form> *@
+                                                    </form>
                                                 </div>
 
                                             </td>

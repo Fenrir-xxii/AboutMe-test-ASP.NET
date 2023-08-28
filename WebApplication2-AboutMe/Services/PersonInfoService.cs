@@ -34,11 +34,12 @@ public class PersonInfoService
 	}
 	public void Add(Skill skill)
 	{
-		skill.Id = (PersonInfo.Skills.Count == 0) ? 0 : PersonInfo.Skills.Max(skill => skill.Id);
+		skill.Id = (PersonInfo.Skills.Count == 0) ? 0 : 1 + PersonInfo.Skills.Max(skill => skill.Id);
 		
 		// check if skill already exists
 		PersonInfo.Skills.Add(skill);
 	}
+    public string LogoPath { get; set; } = String.Empty;
 	private void CreateFile()
 	{
         var person = new PersonInfo

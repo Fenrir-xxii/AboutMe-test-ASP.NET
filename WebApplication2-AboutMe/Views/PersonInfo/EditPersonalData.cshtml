@@ -4,13 +4,13 @@
 *@
 @{
 }
-@model Skill;
+@model PersonInfo;
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>New Skill</title>
+    <title>Edit Personal Data</title>
 	<link href="/libraries/bootstrap/bootstrap-5.0.2-dist/css/bootstrap.css" rel="stylesheet" />
 	<style>
 		
@@ -32,34 +32,21 @@
 							</div> *@
 
 							<div class="mb-3">
-								@using System.IO
-								@{
-									var res = "/local/storage/img/";
-								}
-								<p id="pathToFolder" hidden="true">@res</p>
-								@* <div id="fullPath" @Html.TextBoxFor(m=> m.LogoPath)></div> *@
-
-								@Html.LabelFor(m => m.LogoPath, new {@class = "form-label"})
-								@* <div id="fullPath" @Html.TextBoxFor(m=> m.LogoPath)></div> *@
-								<div id="fullPath"></div>
-								@* @Html.TextBoxFor(m => m.LogoPath, new {@class = "form-control", id="fullPath"}) *@
-								@* @Html.TextBoxFor(m => m.LogoPath, new {@class = "form-control", placeholder = "Skill logo path...", text="1234"}) *@
-								<input type="file" id="logo" name="avatar" accept="image/png, image/jpeg"/>
-								@* @Html.TextBoxFor() *@
-								@* @Html.ValidationMessageFor(m => m.LogoPath) *@
-								
+								@Html.LabelFor(m => m.FirstName, new {@class = "form-label"})
+								@Html.TextBoxFor(m => m.FirstName, new {@class = "form-control", placeholder = "Your First Name..."})
+								@Html.ValidationMessageFor(m => m.FirstName)
 							</div>
 
 							<div class="mb-3">
-								@Html.LabelFor(m => m.Title, new {@class = "form-label"})
-								@Html.TextBoxFor(m => m.Title, new {@class = "form-control", placeholder = "Skill title..."})
-								@Html.ValidationMessageFor(m => m.Title)
+								@Html.LabelFor(m => m.LastName, new {@class = "form-label"})
+								@Html.TextBoxFor(m => m.LastName, new {@class = "form-control", placeholder = "Your Last Name..."})
+								@Html.ValidationMessageFor(m => m.LastName)
 							</div>
 
 							<div class="mb-3">
-								@Html.LabelFor(m => m.Level, new {@class = "form-label"})
-								@Html.TextBoxFor(m => m.Level, new {@class = "form-control", placeholder = "Skill level...", type="number", min = 0, step=1, max=100})
-								@Html.ValidationMessageFor(m => m.Level)
+								@Html.LabelFor(m => m.Age, new {@class = "form-label"})
+								@Html.TextBoxFor(m => m.Age, new {@class = "form-control", placeholder = "Skill level...", type="number", min = 1, step=1, max=200})
+								@Html.ValidationMessageFor(m => m.Age)
 							</div>
 
 							<button type="submit" class="btn btn-success">Save</button>
