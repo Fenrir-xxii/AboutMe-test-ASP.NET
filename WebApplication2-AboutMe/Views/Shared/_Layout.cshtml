@@ -1,0 +1,25 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>@ViewData["Title"]</title>
+    <link href="/libraries/bootstrap/bootstrap-5.0.2-dist/css/bootstrap.css" rel="stylesheet" />
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+   
+    @RenderBody()
+
+    <script src="/libraries/bootstrap/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
+    <script src="/libraries/jquery/jquery-3.7.0.js"></script>
+    @RenderSection("Scripts", required: false)
+
+
+</body>
+</html>

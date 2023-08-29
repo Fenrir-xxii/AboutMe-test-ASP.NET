@@ -3,20 +3,19 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+	Layout = "_Layout";
+	ViewData["Title"] = "Add New Skill";
 }
 @model Skill;
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>New Skill</title>
-	<link href="/libraries/bootstrap/bootstrap-5.0.2-dist/css/bootstrap.css" rel="stylesheet" />
+@section Styles{
 	<style>
-		
+		.card-title {
+			color: blue;
+		}
 	</style>
-</head>
-<body>
+}
+
+
 	<div class="container">
 		<div class="row mt-5">
 			<div class="col-md-4">
@@ -26,29 +25,6 @@
 					</div>
 					<div class="card-body">
 						<form method="post" enctype="multipart/form-data">
-
-							@* <div class ="mb-3">
-								<input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
-							</div> *@
-
-							<div class="mb-3">
-								@using System.IO
-								@{
-									var res = "/local/storage/img/";
-								}
-								<p id="pathToFolder" hidden="true">@res</p>
-								@* <div id="fullPath" @Html.TextBoxFor(m=> m.LogoPath)></div> *@
-
-								@Html.LabelFor(m => m.LogoPath, new {@class = "form-label"})
-								@* <div id="fullPath" @Html.TextBoxFor(m=> m.LogoPath)></div> *@
-								<div id="fullPath"></div>
-								@* @Html.TextBoxFor(m => m.LogoPath, new {@class = "form-control", id="fullPath"}) *@
-								@* @Html.TextBoxFor(m => m.LogoPath, new {@class = "form-control", placeholder = "Skill logo path...", text="1234"}) *@
-								<input type="file" id="logo" name="avatar" accept="image/png, image/jpeg"/>
-								@* @Html.TextBoxFor() *@
-								@* @Html.ValidationMessageFor(m => m.LogoPath) *@
-								
-							</div>
 
 							<div class="mb-3">
 								@Html.LabelFor(m => m.Title, new {@class = "form-label"})
@@ -62,6 +38,12 @@
 								@Html.ValidationMessageFor(m => m.Level)
 							</div>
 
+							<div class="mb-3">
+								@Html.LabelFor(m => m.Image, new {@class = "form-label"})
+								@Html.TextBoxFor(m => m.Image, new {@class = "form-control", placeholder = "Pick image...", type="file", accept=".jpg,.png"})
+								@Html.ValidationMessageFor(m => m.Image)
+							</div>
+
 							<button type="submit" class="btn btn-success">Save</button>
 							<a href="/PersonInfo/Index" class="btn btn-outline-info">Return</a>
 						</form>
@@ -72,24 +54,8 @@
 	</div>
 
 
-    <script src="/bootstrap5/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
-    <script src="~/local/js/pathToFile.js"></script>
+@* @section Scripts {
+	<script src="~/local/js/pathToFile.js"></script>
+} *@
 
-    @* <script>
-		function setLogo(){
-			// let input = document.getElementById("logo").value;
-			let input = document.getElementById("logo").files[0].name;
-			console.log("input", input);
-		}
-		function getLogoPath(){
-			let input = document.getElementById("logo").files[0].name;
-			let folderPath = document.getElementById("pathToFolder").innerText;
-			let fullPath = folderPath + input;
-			console.log("input", input);
-			console.log("full path", fullPath);
-		}
-	</script> *@
-
-</body>
-</html>
+   

@@ -12,5 +12,8 @@ namespace WebApplication2_AboutMe.Models
 		public int Age { get; set; }
         //public List<string> Skills { get; set; }
 		public List<Skill> Skills { get; set; } = new List<Skill>();
-    }
+		public string? Image { get; set; }
+		[System.Text.Json.Serialization.JsonIgnore]
+		public string ImageUrl => "/uploads/images/" + Image;
+	}
 }

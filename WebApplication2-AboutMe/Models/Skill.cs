@@ -9,5 +9,8 @@ public class Skill
 	public string Title { get; set; }
 	[Required]
 	public int Level { get; set; }
-	public string LogoPath { get; set; } = string.Empty;
+	//public string LogoPath { get; set; } = string.Empty;
+	public string? Image { get; set; }
+	[System.Text.Json.Serialization.JsonIgnore]
+	public string ImageUrl => "/uploads/images/" + Image;
 }

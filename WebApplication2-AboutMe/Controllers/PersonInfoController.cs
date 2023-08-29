@@ -8,10 +8,11 @@ namespace WebApplication2_AboutMe.Controllers;
 public class PersonInfoController : Controller
 {
 	private readonly PersonInfoService _personInfoService;
-	//private string _tempPath;
-	public PersonInfoController(PersonInfoService personInfoService)
+	private readonly IWebHostEnvironment _webHostEnvironment;
+	public PersonInfoController(PersonInfoService personInfoService, IWebHostEnvironment hostEnvironment)
 	{
 		_personInfoService = personInfoService;
+		_webHostEnvironment = hostEnvironment;
 	}
 
 	public IActionResult Index()
@@ -23,44 +24,28 @@ public class PersonInfoController : Controller
 	{
 		return View(new Skill());
 	}
-    //[HttpPost]
-    //public IActionResult AddSkill([FromForm] Skill skill)
-    //{
-    //	if (_tempPath !=null &&  _tempPath.Length > 0)
-    //	{
-    //		skill.LogoPath = _tempPath;
-    //		_tempPath = String.Empty;
-    //	}
-    //	if (!ModelState.IsValid)
-    //	{
-    //		return View(skill);
-    //	}
-
-    //	_personInfoService.Add(skill);
-    //	_personInfoService.SaveChanges();
-    //	return RedirectToAction("Index");
-    //}
     [HttpPost]
-    public IActionResult AddSkill([FromForm] Skill skill)
+    public IActionResult AddSkill([FromForm] Skill skill, IFormFile? image)
     {
-        var dir = Directory.GetCurrentDirectory() + @"\wwwroot" + Repo.SelectedLogoPath;
-
-        if (System.IO.File.Exists(dir))
-        {
-            skill.LogoPath = Repo.SelectedLogoPath;
-            Repo.SelectedLogoPath = String.Empty;
-        }
-        else
-        {
-            skill.LogoPath = Repo.DefaultLogoPath;
-        }
-
         if (!ModelState.IsValid)
         {
             return View(skill);
         }
 
-        _personInfoService.Add(skill);
+		if (image != null)
+		{
+			var filename = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
+			var filenameId = _personInfoService.GetNextSkillId().ToString() + "_" + filename;
+
+			using (var file = System.IO.File.OpenWrite(Path.Combine(_webHostEnvironment.WebRootPath, "uploads/images", filenameId)))
+			{
+				image.CopyTo(file);
+			}
+			skill.Image = filenameId;
+
+		}
+
+		_personInfoService.Add(skill);
         _personInfoService.SaveChanges();
         return RedirectToAction("Index");
     }
@@ -71,7 +56,7 @@ public class PersonInfoController : Controller
         return View(skill);
     }
     [HttpPost]
-    public IActionResult EditSkill(int id, [FromForm] Skill form)
+    public IActionResult EditSkill(int id, [FromForm] Skill form, IFormFile? image)
     {
         if (!ModelState.IsValid)
         {
@@ -80,7 +65,23 @@ public class PersonInfoController : Controller
 
         var skill = _personInfoService.PersonInfo.Skills.First(x => x.Id == id);
 
-        skill.Title = form.Title;
+		if (image != null)
+		{
+			var filename = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
+			//var filenameId = skill.Id.ToString() + "_" + form.Title + "_" + filename;
+			var filenameId = skill.Id.ToString() + "_" + filename;
+			if (skill.Image != null)
+			{
+				System.IO.File.Delete(Path.Combine(_webHostEnvironment.WebRootPath, "uploads/images", skill.Image));
+			}
+			using (var file = System.IO.File.OpenWrite(Path.Combine(_webHostEnvironment.WebRootPath, "uploads/images", filenameId)))
+			{
+				image.CopyTo(file);
+			}
+			skill.Image = filenameId;
+		}
+
+		skill.Title = form.Title;
         skill.Level = form.Level;
 
         _personInfoService.SaveChanges();
@@ -90,6 +91,10 @@ public class PersonInfoController : Controller
 	public IActionResult DeleteSkill(int id)
 	{
 		var skill = _personInfoService.PersonInfo.Skills.First(x => x.Id == id);
+		if (skill.Image != null)
+		{
+			System.IO.File.Delete(Path.Combine(_webHostEnvironment.WebRootPath, "uploads/images", skill.Image));
+		}
 		_personInfoService.PersonInfo.Skills.Remove(skill);
 		_personInfoService.SaveChanges();
 		return RedirectToAction("Index");
@@ -97,22 +102,33 @@ public class PersonInfoController : Controller
 	[HttpGet]
 	public IActionResult EditPersonalData()
 	{
-		//var person = _personInfoService.PersonInfo;
 		return View(_personInfoService.PersonInfo);
 	}
 	[HttpPost]
-	public IActionResult EditPersonalData([FromForm] PersonInfo form)
+	public IActionResult EditPersonalData([FromForm] PersonInfo form, IFormFile? image)
 	{
-        //form.Skills = _personInfoService.PersonInfo.Skills;
-
 		if (!ModelState.IsValid)
 		{
 			return View(form);
 		}
 
-		//var person = _personInfoService.PersonInfo;
+        if (image != null)
+        {
+            var filename = Guid.NewGuid().ToString() + Path.GetExtension(image.FileName);
+            //var filenameId = skill.Id.ToString() + "_" + form.Title + "_" + filename;
+            var filenameId = "user_logo_" + filename;
+            if (_personInfoService.PersonInfo.Image != null)
+            {
+                System.IO.File.Delete(Path.Combine(_webHostEnvironment.WebRootPath, "uploads/images", _personInfoService.PersonInfo.Image));
+            }
+            using (var file = System.IO.File.OpenWrite(Path.Combine(_webHostEnvironment.WebRootPath, "uploads/images", filenameId)))
+            {
+                image.CopyTo(file);
+            }
+            _personInfoService.PersonInfo.Image = filenameId;
+        }
 
-		_personInfoService.PersonInfo.FirstName = form.FirstName;
+        _personInfoService.PersonInfo.FirstName = form.FirstName;
 		_personInfoService.PersonInfo.LastName = form.LastName;
 		_personInfoService.PersonInfo.Age = form.Age;
 
@@ -120,13 +136,4 @@ public class PersonInfoController : Controller
 		return RedirectToAction("Index");
 	}
 
-	[HttpPost]
-	public void SkillsLogo([FromBody] SkillSearchForm form)
-	{
-		if (form.Query.Length > 0)
-		{
-            Repo.SelectedLogoPath = form.Query;
-            //_personInfoService.LogoPath = form.Query;
-		}
-	}
 }

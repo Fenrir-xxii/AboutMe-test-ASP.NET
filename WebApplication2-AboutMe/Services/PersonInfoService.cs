@@ -39,7 +39,11 @@ public class PersonInfoService
 		// check if skill already exists
 		PersonInfo.Skills.Add(skill);
 	}
-    public string LogoPath { get; set; } = String.Empty;
+    public int GetNextSkillId()
+    {
+        return (PersonInfo.Skills.Count == 0) ? 0 : 1 + PersonInfo.Skills.Max(skill => skill.Id);
+	}
+    //public string LogoPath { get; set; } = String.Empty;
 	private void CreateFile()
 	{
         var person = new PersonInfo
@@ -54,63 +58,63 @@ public class PersonInfoService
 					Id= 0,
 					Title = "C++",
 					Level = 70,
-					LogoPath = "/local/storage/img/cpp.png"
+					//LogoPath = "/local/storage/img/cpp.png"
                 },
                 new Skill
                 {
                     Id= 1,
                     Title = "C#",
                     Level = 75,
-                    LogoPath = "/local/storage/img/cs.png"
+                    //LogoPath = "/local/storage/img/cs.png"
                 },
                 new Skill
                 {
                     Id= 2,
                     Title = "JavaScript",
                     Level = 73,
-                    LogoPath = "/local/storage/img/js.png"
+                    //LogoPath = "/local/storage/img/js.png"
                 },
                 new Skill
                 {
                     Id= 3,
                     Title = "SQL",
                     Level = 80,
-                    LogoPath = "/local/storage/img/sql.jpg"
+                    //LogoPath = "/local/storage/img/sql.jpg"
                 },
                 new Skill
                 {
                     Id= 4,
                     Title = "HTML",
                     Level = 68,
-                    LogoPath = "/local/storage/img/html.png"
+                    //LogoPath = "/local/storage/img/html.png"
                 },
                 new Skill
                 {
                     Id= 5,
                     Title = "CSS",
                     Level = 72,
-                    LogoPath = "/local/storage/img/css.png"
+                    //LogoPath = "/local/storage/img/css.png"
                 },
                 new Skill
                 {
                     Id= 5,
                     Title = "Ado.net",
                     Level = 63,
-                    LogoPath = "/local/storage/img/ado-net.jpg"
+                    //LogoPath = "/local/storage/img/ado-net.jpg"
                 },
                 new Skill
                 {
                     Id= 5,
                     Title = "Git",
                     Level = 77,
-                    LogoPath = "/local/storage/img/git.png"
+                    //LogoPath = "/local/storage/img/git.png"
                 },
                 new Skill
                 {
                     Id= 5,
                     Title = "jQuery",
                     Level = 73,
-                    LogoPath = "/local/storage/img/jquery.png"
+                    //LogoPath = "/local/storage/img/jquery.png"
                 }
 
             }

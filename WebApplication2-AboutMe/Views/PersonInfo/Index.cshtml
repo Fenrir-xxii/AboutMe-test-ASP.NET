@@ -3,17 +3,13 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    var filteredSkills = Model.Skills.Where(x => x.Id < 3);
-    
+    Layout = "_Layout";
+    ViewData["Title"] = Model.FirstName +  Model.LastName + " List of Skills";
+
 }
 @model PersonInfo
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title>AboutMe</title>
-    <link href="/libraries/bootstrap/bootstrap-5.0.2-dist/css/bootstrap.css" rel="stylesheet" />
+@section Styles{
     <style>
         .card {
             align-items: center;
@@ -26,31 +22,29 @@
         .d-flex {
             align-items: center;
         }
-        td{
-            vertical-align:middle;
+
+        td {
+            vertical-align: middle;
         }
     </style>
-</head>
-<body>
+}
+   
+
     <div class="container">
         <div class="row-mt-5">
             <div class="col-md-6 d-flex flex-column">
                 <div class="card" style="width: 70rem;">
-                    <img class="card-image" src="/local/storage/img/me.jpg" width="200px;" alt="Card image cap">
+                    @if (Model.Image != null)
+                    {
+                        <img class="img-thumbnail" src="@Model.ImageUrl" width="200px">
+                    }
                     <div class="card-body">
                         <h3 class="card-title">@Model.FirstName @Model.LastName</h3>
                         <h5 class="card-text">@Model.Age years old</h5>
                         <a class="btn btn-outline-success" href="/PersonInfo/EditPersonalData">Edit personal data</a>
                         <a class="btn btn-outline-primary mt-5 mb-5" href="/PersonInfo/AddSkill">Add Skill</a>
                         <a class="btn btn-outline-info mt-5 mb-5" href="/AboutMe/AboutMe">Return</a>
-                       @*  <div>
-                            @foreach (var skill in Model.Skills)
-                            {
-                                <span class="badge bg-success">@skill.Title</span>
-                                <span class="badge bg-success">@skill.Level</span>
-                                <span class="badge bg-success">@skill.LogoPath</span>
-                            }
-                        </div> *@
+                     
                         <div>
                             <table class="table table-hover table-bordered">
                                 <thead>
@@ -66,7 +60,10 @@
                                     {
                                         <tr>
                                             <td>
-                                                <img src="@skill.LogoPath" width="50px">
+                                                @if (skill.Image != null)
+                                                {
+                                                    <img class="img-thumbnail" src="@skill.ImageUrl" width="50px">
+                                                }
                                             </td>
                                             <td>@skill.Title</td>
                                             <td>
@@ -94,23 +91,8 @@
                     </div>
                 </div>
                 <div>
-                    @* <div class="mb-3">
-                        <label for="search" class="form-label">Search</label>
-                        <input type="text" class="form-control" id="search" placeholder="Type county here..."/>
-
-                    </div> *@
+                   
                 </div>
             </div>
         </div>
     </div>
-
-
-    <script src="/libraries/bootstrap/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
-    <script src="/libraries/jquery/jquery-3.7.0.js"></script>
-    @* <script src="/local/js/skills.js"></script> *@
-
-   
-
-
-</body>
-</html>
