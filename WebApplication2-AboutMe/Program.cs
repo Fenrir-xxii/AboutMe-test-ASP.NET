@@ -1,8 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebApplication2_AboutMe.Models;
 using WebApplication2_AboutMe.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<SiteContext>(options =>
+{
+    options.UseSqlite("Data Source=site.db");
+    //SQLitePCL.Batteries.Init();
+});
+
+
 builder.Services.AddMvc();
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<PersonInfoService>(x =>

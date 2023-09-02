@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebApplication2_AboutMe.Models;
 using WebApplication2_AboutMe.Services;
 
@@ -6,17 +7,35 @@ namespace WebApplication2_AboutMe.Controllers
 {
     public class AboutMeController : Controller
     {
-        private readonly PersonInfoService _personInfoService;
-        public AboutMeController(PersonInfoService personInfoService)
+        //private readonly PersonInfoService _personInfoService;
+        private readonly SiteContext _siteContext;
+        public AboutMeController(SiteContext context)
         {
-            _personInfoService = personInfoService;
+            _siteContext = context;
         }
 
         [HttpGet]
         public IActionResult AboutMe()
         {
             Console.WriteLine("Index: ");
-            ViewData["Info"] = _personInfoService.PersonInfo;
+            if(_siteContext.PersonInfo.FirstOrDefault() != null)
+            {
+                ViewData["Info"] = _siteContext.PersonInfo.Include(x => x.Skills).FirstOrDefault();
+			}
+            else
+            {
+                var person = new PersonInfo
+                {
+                    FirstName = "Vasyl",
+                    LastName = "Bihan",
+                    Age = 31,
+                    Image = null,
+                    Skills = new List<Skill>()
+                };
+                _siteContext.PersonInfo.Add(person);
+                _siteContext.SaveChanges();
+                ViewData["Info"] = person;
+            }
 
             return View();
         }
@@ -27,8 +46,10 @@ namespace WebApplication2_AboutMe.Controllers
             {
                 return Json(String.Empty);
             }
-            return Json(_personInfoService.PersonInfo.Skills.Select(x => x.Title).Where(x => x.ToLowerInvariant().Contains(form.Query.ToLowerInvariant())));
-        }
+            //var a = _siteContext.PersonInfo.Include(x => x.Skills).FirstOrDefault().Skills.Where(x => x.Title.ToLower().Contains(form.Query.ToLower())).Select(y => y.Title);
+            //return Json(_siteContext.PersonInfo.Include(x => x.Skills).FirstOrDefault().Skills.Where(x => x.Title.ToLower().Contains(form.Query.ToLower())).Select(y => y.Title));
+			return Json(_siteContext.PersonInfo.Include(x => x.Skills).FirstOrDefault().Skills.Where(x => x.Title.ToLower().Contains(form.Query.ToLower())));
+		}
 
     }
 }
