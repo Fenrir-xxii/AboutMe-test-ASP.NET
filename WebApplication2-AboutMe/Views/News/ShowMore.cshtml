@@ -1,0 +1,53 @@
+﻿@using WebApplication2_AboutMe.Models;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = Model.Title;
+}
+@model NewsItem;
+
+@section Styles{
+    <style>
+        .myImageContainer{
+            height: 500px;
+            width: 100%;
+        }
+        .myImageContainer img {
+            display: block;
+            margin-left: 0px;
+            /* margin-right: auto; */
+            object-fit: contain;
+            height: 100%;
+            /* width: 80%; */
+            /* max-height: 400px; */
+            
+        }
+        .fullDescription{
+            text-align: justify;
+        }
+
+        .myFooter{
+            margin-top: 15px;
+        }
+    </style>
+}
+
+<div class="container">
+    <div class="media">
+        <div class="myImageContainer">
+            <img class="align-self-start mr-3" src="@Model.ImageUrl" alt="Generic placeholder image">
+        </div>
+        <div class="media-body">
+            <h2 class="mt-0"><b>@Model.Title</b></h2>
+            <div class="text-justify fullDescription">
+                <span style="white-space: pre-line">@Model.FullDescription</span>
+            </div>
+           
+        </div>
+    </div>
+    
+    <a href="/News/AllNews" class="btn btn-outline-info myFooter">Return</a>
+
+</div>

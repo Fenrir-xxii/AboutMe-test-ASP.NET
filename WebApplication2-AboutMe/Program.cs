@@ -28,6 +28,12 @@ app.MapControllerRoute(name: "personInfo_editSkill", pattern: "{controller=Perso
 app.MapControllerRoute(name: "personInfo_deleteSkill", pattern: "{controller=PersonInfo}/{action=DeleteSkill}/{id}");
 app.MapControllerRoute(name: "personInfo_addLogo", pattern: "{controller=PersonInfo}/{action=SkillsLogo}");
 app.MapControllerRoute(name: "personInfo_editPersonalData", pattern: "{controller=PersonInfo}/{action=EditPersonalData}");
+app.MapControllerRoute(name: "news_addNews", pattern: "{controller=News}/{action=AddNews}");
+app.MapControllerRoute(name: "news_editNews", pattern: "{controller=News}/{action=EditNews}/{id}");
+app.MapControllerRoute(name: "news_showMore", pattern: "{controller=News}/{action=ShowMore}/{id}");
+app.MapControllerRoute(name: "news_showAllNews", pattern: "{controller=News}/{action=AllNews}");
+app.MapControllerRoute(name: "news_delete", pattern: "{controller=News}/{action=DeleteNews}/{id}");
+
 app.UseStaticFiles();
 
 app.Run();

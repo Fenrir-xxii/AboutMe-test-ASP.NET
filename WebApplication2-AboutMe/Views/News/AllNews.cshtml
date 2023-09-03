@@ -1,0 +1,88 @@
+﻿@using WebApplication2_AboutMe.Models;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Recent News";
+    var allNews = ViewData["News"] as List<NewsItem>;
+    var itemsPerRow = 3;
+    var newsTotal = allNews.Count;
+    decimal newsCount = allNews.Count;
+    var rows = Math.Ceiling(newsCount / itemsPerRow);
+    var copyNews = new List<NewsItem>(allNews);
+}
+
+@section Styles{
+    <style>
+       .flex-row{
+           gap: 50px;
+       }
+       .myRow{
+           justify-content:center;
+           padding: 10px;
+       }
+       .myCol{
+           width:80%;
+       }
+       .myImageContainer img{
+           object-fit: contain;
+           height: 200px;
+           width: 100%;
+        }
+    </style>
+}
+
+
+@* <div class="container">
+    <div class="row mt-5 myRow">
+        <div class="col-md-6 d-flex flex-row myCol">
+            @foreach (var newsItem in @news)
+            {
+                <div class="card" style="width: 60rem;">
+                    <div class="myImageContainer">
+                        <img class="card-img-top" src="@newsItem.ImageUrl" alt="Card image cap" class="img-fluid">
+                        
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">@newsItem.Title</h5>
+                        <p class="card-text">@newsItem.ShortDescription</p>
+                    </div>
+                    <div class="card-body">
+                        <a href="/News/ShowMore/@newsItem.Id" class="card-link">Read more...</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</div> *@
+
+
+@for (int i = 0; i < rows; i++)
+{
+    var rowItems = copyNews.Take(Math.Min(itemsPerRow, newsTotal));
+    
+    <div class="row myRow">
+        @foreach (var newsItem in rowItems)
+        {
+            <div class="col-md-4">
+                <div class="card" style="width: 30rem; height: 25rem">
+                    <div class="myImageContainer">
+                        <img class="card-img-top" src="@newsItem.ImageUrl" alt="Card image cap" class="img-fluid">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">@newsItem.Title</h5>
+                        <p class="card-text">@newsItem.ShortDescription</p>
+                    </div>
+                    <div class="card-body">
+                        <a href="/News/ShowMore/@newsItem.Id" class="card-link">Read more...</a>
+                    </div>
+                </div>
+            </div>
+        } 
+    </div>
+    copyNews.RemoveRange(0, Math.Min(itemsPerRow, newsTotal));
+    newsTotal = newsTotal - itemsPerRow;
+}
+

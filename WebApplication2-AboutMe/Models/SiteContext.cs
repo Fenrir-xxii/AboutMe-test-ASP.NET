@@ -9,5 +9,6 @@ public class SiteContext: DbContext
     public SiteContext(DbContextOptions options) : base(options) { }
     public virtual DbSet<PersonInfo> PersonInfo { get; set; } = null!;
     public virtual DbSet<Skill> Skills { get; set; } = null!;
+    public virtual DbSet<NewsItem> News { get; set; } = null!;
 
 }

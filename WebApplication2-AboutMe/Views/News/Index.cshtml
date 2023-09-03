@@ -1,0 +1,60 @@
+﻿@using WebApplication2_AboutMe.Models;
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "List of News";
+    var news = ViewData["News"] as List<NewsItem>;
+}
+@* @model NewsItem; *@
+
+
+<div class="container">
+    <div class="row-mt-5">
+        <div class="col-md-6 d-flex flex-column">
+            <div>
+                <a class="btn btn-outline-primary mt-5 mb-5" href="/News/AddNews">Add News</a>
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Picture</th>
+                            <th>Title</th>
+                            <th>CreatedAt</th>
+                            <th>Buttons</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var newsItem in @news)
+                        {
+                            <tr>
+                                <td>
+                                    @if (newsItem.Image != null)
+                                    {
+                                        <img class="img-thumbnail" src="@newsItem.ImageUrl" width="50px">
+                                    }
+                                </td>
+                                <td>@newsItem.Title</td>
+                                <td>@newsItem.CreatedAt</td>
+                                <td>
+                                    <div class="d-flex">
+                                        <a class="btn btn-outline-primary" href="/News/EditNews/@newsItem.Id">Edit</a>&nbsp;
+                                        <form method="post" action="/News/DeleteNews/@newsItem.Id">
+                                            <button class="btn btn-outline-warning">Delete</button>
+                                        </form>&nbsp;
+                                        <a class="btn btn-outline-primary" href="/News/ShowMore/@newsItem.Id">Show</a>
+                                    </div>
+
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+
+            </div>
+            <div>
+            </div>
+        </div>
+    </div>
+</div>
