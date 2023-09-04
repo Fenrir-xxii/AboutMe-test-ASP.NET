@@ -30,6 +30,9 @@
            height: 200px;
            width: 100%;
         }
+        .noPad{
+            padding-top: 0px;
+        }
     </style>
 }
 
@@ -71,11 +74,21 @@
                     <div class="myImageContainer">
                         <img class="card-img-top" src="@newsItem.ImageUrl" alt="Card image cap" class="img-fluid">
                     </div>
+                    
                     <div class="card-body">
-                        <h5 class="card-title">@newsItem.Title</h5>
+                        <h6>@newsItem.CreatedAt.ToString("dd.MM.yyyy")</h6>
+                        @if (newsItem.Title.Length > 70)
+                        {
+                            var shortTitle = @newsItem.Title.Substring(0, 67) + "...";
+                            <h4 class="card-title">@shortTitle</h4>
+                        }
+                        else
+                        {
+                            <h4 class="card-title">@newsItem.Title</h4>
+                        }
                         <p class="card-text">@newsItem.ShortDescription</p>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body noPad">
                         <a href="/News/ShowMore/@newsItem.Id" class="card-link">Read more...</a>
                     </div>
                 </div>

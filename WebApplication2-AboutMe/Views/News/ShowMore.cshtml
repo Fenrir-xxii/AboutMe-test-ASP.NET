@@ -31,6 +31,10 @@
         .myFooter{
             margin-top: 15px;
         }
+
+        .container {
+            padding-bottom: 30px;
+        }
     </style>
 }
 
@@ -40,6 +44,7 @@
             <img class="align-self-start mr-3" src="@Model.ImageUrl" alt="Generic placeholder image">
         </div>
         <div class="media-body">
+            <h5 class="mt-0">@Model.CreatedAt.ToString("dd.MM.yyyy")</h5>
             <h2 class="mt-0"><b>@Model.Title</b></h2>
             <div class="text-justify fullDescription">
                 <span style="white-space: pre-line">@Model.FullDescription</span>

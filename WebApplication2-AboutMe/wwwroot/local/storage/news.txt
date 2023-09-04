@@ -1,15 +1,12 @@
 1.
 IBM, Salesforce join forces in enterprise AI push
 
-The two companies are working together on several areas in the CRM value chain, including the integration of Salesforce offerings for sale via IBM’s consulting business.
-Salesforce and IBM are teaming up to provide generative AI for the enterprise, combining their respective efforts into what the companies hope will be a more attractive package for CRM customers.
+The two companies are working together on several areas in the CRM value chain, including the integration of Salesforce offerings for sale via IBM’s consulting business. Salesforce and IBM are teaming up to provide generative AI for the enterprise, combining their respective efforts into what the companies hope will be a more attractive package for CRM customers.
 
 The partnership, announced on Thursday, will focus on several areas in the CRM value chain, including the integration of Salesforce offerings for sale with IBM’s consulting business. IBM said it will use its Garage digital transformation methodology to help customers implement Salesforce AI technologies such as Sales Cloud and Marketing Cloud.
 
 Customers will also be able to access IBM’s Data Classifier tool; it's designed to simplify data mapping via industry-specific AI models, on their Salesforce-generated data, and to complement Salesforce’s AI tooling with its watsonx AI and data platform.
-The collaboration should allow enterprises to get genAI working for them more simply and easily, according to Matt Candy, IBM Consulting’s global managing partner for generative AI. “We see how the need to increase employee productivity while simultaneously elevating the customer experience with speed, personalization, and convenience has surged exponentially,” he said in a statement.
-
-The start of a partnership of this kind has been in the cards for some time, according to Arun Chandrasekaran, distinguished vice president and analyst at Gartner Research. He said one of the major focuses for IBM’s consulting business of late has been attempting to increase the company’s wallet share with non-IBM products.
+The collaboration should allow enterprises to get genAI working for them more simply and easily, according to Matt Candy, IBM Consulting’s global managing partner for generative AI. “We see how the need to increase employee productivity while simultaneously elevating the customer experience with speed, personalization, and convenience has surged exponentially,” he said in a statement. The start of a partnership of this kind has been in the cards for some time, according to Arun Chandrasekaran, distinguished vice president and analyst at Gartner Research. He said one of the major focuses for IBM’s consulting business of late has been attempting to increase the company’s wallet share with non-IBM products.
 
 “To that end, they’ve been increasing the workforce and consulting capabilities with third-party partners,” Chandrasekaran said.
 
@@ -23,14 +20,10 @@ Microsoft launches native integration for Python in Excel
 With native Python integration with Excel, users will be able to use the new “PY” function to input Python code directly into Excel cells.
 Microsoft has partnered with programming language repository provider, Anaconda, to allow Python code to run in Excel without any additional setup. The move is designed to help data practitioners use data inside the application for data analytics and machine learning.
 
-“With Python in Excel, you can type Python directly into a cell, the Python calculations run in the Microsoft Cloud, and your results are returned to the worksheet, including plots and visualizations,” Microsoft said in a blog post.
-
-The announcement from Microsoft assumes significance as a majority of enterprise data globally is still stored in Excel sheets and data practitioners often find it difficult to use Python within Excel without adds-ons, or additional setups.
+“With Python in Excel, you can type Python directly into a cell, the Python calculations run in the Microsoft Cloud, and your results are returned to the worksheet, including plots and visualizations,” Microsoft said in a blog post. The announcement from Microsoft assumes significance as a majority of enterprise data globally is still stored in Excel sheets and data practitioners often find it difficult to use Python within Excel without adds-ons, or additional setups.
 Several attempts have been made to make it easier to use Python code within Microsoft Excel. In 2014, Zoomer Analytics developed Xlwings, a BSD-licensed Python library that connects to Excel and allows Excel spreadsheets and Python applications to interact directly.
 
-In 2017, Continuum Analytics, makers of Anaconda, released Anaconda Fusion, a system for connecting the enterprise-grade version of Anaconda with Microsoft Excel 2016 and higher versions. With this integration, data scientists could expose their work to Excel users with Python code and data available in Jupyter notebooks.   
-
-Other paid add-ons such as PyXLL can also help integrate Python into Excel.
+In 2017, Continuum Analytics, makers of Anaconda, released Anaconda Fusion, a system for connecting the enterprise-grade version of Anaconda with Microsoft Excel 2016 and higher versions. With this integration, data scientists could expose their work to Excel users with Python code and data available in Jupyter notebooks. Other paid add-ons such as PyXLL can also help integrate Python into Excel.
 
 https://www.computerworld.com/article/3705211/microsoft-launches-native-integration-for-python-in-excel.html
 
@@ -42,22 +35,16 @@ AI Can Write Code Like Humans—Bugs and All
 New tools that help developers write software also generate similar mistakes.
 Some software developers are now letting artificial intelligence help write their code. They’re finding that AI is just as flawed as humans.
 
-Last June, GitHub, a subsidiary of Microsoft that provides tools for hosting and collaborating on code, released a beta version of a program that uses AI to assist programmers. Start typing a command, a database query, or a request to an API, and the program, called Copilot, will guess your intent and write the rest.
+Last June, GitHub, a subsidiary of Microsoft that provides tools for hosting and collaborating on code, released a beta version of a program that uses AI to assist programmers. Start typing a command, a database query, or a request to an API, and the program, called Copilot, will guess your intent and write the rest. Alex Naka, a data scientist at a biotech firm who signed up to test Copilot, says the program can be very helpful, and it has changed the way he works. “It lets me spend less time jumping to the browser to look up API docs or examples on Stack Overflow,” he says. “It does feel a little like my work has shifted from being a generator of code to being a discriminator of it.”
 
-Alex Naka, a data scientist at a biotech firm who signed up to test Copilot, says the program can be very helpful, and it has changed the way he works. “It lets me spend less time jumping to the browser to look up API docs or examples on Stack Overflow,” he says. “It does feel a little like my work has shifted from being a generator of code to being a discriminator of it.”
-
-But Naka has found that errors can creep into his code in different ways. “There have been times where I've missed some kind of subtle error when I accept one of its proposals,” he says. “And it can be really hard to track this down, perhaps because it seems like it makes errors that have a different flavor than the kind I would make.”
-
-The risks of AI generating faulty code may be surprisingly high. Researchers at NYU recently analyzed code generated by Copilot and found that, for certain tasks where security is crucial, the code contains security flaws around 40 percent of the time.
+But Naka has found that errors can creep into his code in different ways. “There have been times where I've missed some kind of subtle error when I accept one of its proposals,” he says. “And it can be really hard to track this down, perhaps because it seems like it makes errors that have a different flavor than the kind I would make.” The risks of AI generating faulty code may be surprisingly high. Researchers at NYU recently analyzed code generated by Copilot and found that, for certain tasks where security is crucial, the code contains security flaws around 40 percent of the time.
 
 The figure “is a little bit higher than I would have expected,” says Brendan Dolan-Gavitt, a professor at NYU involved with the analysis. “But the way Copilot was trained wasn’t actually to write good code—it was just to produce the kind of text that would follow a given prompt.”
 
 Despite such flaws, Copilot and similar AI-powered tools may herald a sea change in the way software developers write code. There’s growing interest in using AI to help automate more mundane work. But Copilot also highlights some of the pitfalls of today’s AI techniques.
 While analyzing the code made available for a Copilot plugin, Dolan-Gavitt found that it included a list of restricted phrases. These were apparently introduced to prevent the system from blurting out offensive messages or copying well-known code written by someone else.
 
-Oege de Moor, vice president of research at GitHub and one of the developers of Copilot, says security has been a concern from the start. He says the percentage of flawed code cited by the NYU researchers is only relevant for a subset of code where security flaws are more likely.
-
-De Moor invented CodeQL, a tool used by the NYU researchers that automatically identifies bugs in code. He says GitHub recommends that developers use Copilot together with CodeQL to ensure their work is safe.
+Oege de Moor, vice president of research at GitHub and one of the developers of Copilot, says security has been a concern from the start. He says the percentage of flawed code cited by the NYU researchers is only relevant for a subset of code where security flaws are more likely. De Moor invented CodeQL, a tool used by the NYU researchers that automatically identifies bugs in code. He says GitHub recommends that developers use Copilot together with CodeQL to ensure their work is safe.
 
 ------------------------------------------
 
@@ -67,30 +54,15 @@ Brighton & Hove Albion 3 - 1 Newcastle United
 Teenager Evan Ferguson scored a hat-trick to demonstrate his remarkable potential and help Brighton lay down a marker for another special Premier League season as they outgunned Newcastle.
 Both sides discovered their European groups this week after overachieving last term - and Albion look far better placed than the Magpies to challenge near the top this time round.
 
-Republic of Ireland striker Ferguson pounced from close range after goalkeeper Nick Pope had spilled Billy Gilmour's long-range effort.
+Republic of Ireland striker Ferguson pounced from close range after goalkeeper Nick Pope had spilled Billy Gilmour's long-range effort. The 18-year-old curled home a beauty from 25 yards to make it 2-0 - and then hit another, via a huge Fabian Schar deflection, for his 10th Premier League goal and his first hat-trick. He becomes only the fourth player to score a Premier League hat-trick before their 19th birthday after Chris Bart-Williams, Robbie Fowler and Michael Owen.
+Newcastle's first shot on target did not come until the 87th minute and they scored with their second, as Callum Wilson chased down a long ball to fire home in injury time. However, it was far too late to threaten any comeback. Brighton's continuing success is a genuine rarity at the top end of club football, with an excellent set-up meaning they just keep going despite bigger and richer clubs taking their stars.
 
-The 18-year-old curled home a beauty from 25 yards to make it 2-0 - and then hit another, via a huge Fabian Schar deflection, for his 10th Premier League goal and his first hat-trick.
+When boss Graham Potter left for Chelsea, Roberto de Zerbi came in and made them better. When left-back Marc Cucurella went to the Blues for £60m, Pervis Estupinan replaced him and made them better. Their key midfielders Moises Caicedo and Alexis Mac Allister went to Chelsea for £100m and Liverpool for £35m respectively this summer. And here they are on three wins from four games - above those teams.
 
-He becomes only the fourth player to score a Premier League hat-trick before their 19th birthday after Chris Bart-Williams, Robbie Fowler and Michael Owen.
-
-Newcastle's first shot on target did not come until the 87th minute and they scored with their second, as Callum Wilson chased down a long ball to fire home in injury time. However, it was far too late to threaten any comeback.
-
-Brighton's continuing success is a genuine rarity at the top end of club football, with an excellent set-up meaning they just keep going despite bigger and richer clubs taking their stars.
-
-When boss Graham Potter left for Chelsea, Roberto de Zerbi came in and made them better. When left-back Marc Cucurella went to the Blues for £60m, Pervis Estupinan replaced him and made them better.
-
-Their key midfielders Moises Caicedo and Alexis Mac Allister went to Chelsea for £100m and Liverpool for £35m respectively this summer. And here they are on three wins from four games - above those teams.
-
-Ferguson, as prodigious a talent as he is, might not have been given a regular run of games at another club after moving from Bohemians in 2021.
-
-They are in their first European campaign this season, in the Europa League, but if they can balance both who knows what competition they could be in next season?
-
-Solly March, Kaoru Mitoma and Lewis Dunk all had chances to score before Ferguson's triple made him the first non-English player to hit 10 Premier League goals before their 19th birthday.
+Ferguson, as prodigious a talent as he is, might not have been given a regular run of games at another club after moving from Bohemians in 2021. They are in their first European campaign this season, in the Europa League, but if they can balance both who knows what competition they could be in next season? Solly March, Kaoru Mitoma and Lewis Dunk all had chances to score before Ferguson's triple made him the first non-English player to hit 10 Premier League goals before their 19th birthday.
 
 It is still early days and they have had a tough start in terms of fixtures, but Newcastle - who discovered their Champions League group this week - have lost three of their opening four games.
-
 They had to make their first change to the starting line-up this season, with Sven Botman injured and Matt Targett replacing him, and had two chances to score in the opening three minutes with Alexander Isak twice shooting wide.
-
 Sadly they were probably their best chances until the death when Wilson ran onto Sean Longstaff's long ball to score a consolation.
 
 ------------------------------------------
@@ -100,11 +72,7 @@ Metallica Just Beat Taylor Swift for Los Angeles SoFi Stadium Attendance Record
 
 While Taylor Swift has the hottest ticket going in the music world right now, there is now another act that currently holds the attendance record for Los Angeles' SoFi Stadium. That would be Metallica, who drew approximately 78,000 fans to each of their SoFi concerts over the weekend, as reported by the Los Angeles Times.
 
-The venue itself has a capacity of 70,240 seats, but Metallica was able to make the most of their production to allow more fans access to the shows while standing in the "Snake Pit" area of their stage. With the band performing in the round, the center area of the stage has been removed to give fans closer access to the group during their shows, and thus allowing for more ticket sales. A reported 156,000 tickets were purchased for the two-night run at SoFi.
-
-The stage itself is quite impressive, as Billboard reported earlier this year that the ring-shaped stage has eight towers of monitors and speakers, with each of the towers anchored by a raised platform that includes VIP seating for fans. In addition, the group reportedly tours with 87 trucks - 45 for the group and their setup, plus two groups of 21 trucks to assemble the stage and towers. Metallica have a crew of 130 people, plus 40 steelworkers, local hires and truck drivers.
-
-For those wondering, yes, Taylor Swift did sell out during her six-night run at SoFi Stadium earlier this summer. The concerts were attended by 420,000 ticket holders over the run, with just over 70,000 attendance at each show.
+The venue itself has a capacity of 70,240 seats, but Metallica was able to make the most of their production to allow more fans access to the shows while standing in the "Snake Pit" area of their stage. With the band performing in the round, the center area of the stage has been removed to give fans closer access to the group during their shows, and thus allowing for more ticket sales. A reported 156,000 tickets were purchased for the two-night run at SoFi. The stage itself is quite impressive, as Billboard reported earlier this year that the ring-shaped stage has eight towers of monitors and speakers, with each of the towers anchored by a raised platform that includes VIP seating for fans. In addition, the group reportedly tours with 87 trucks - 45 for the group and their setup, plus two groups of 21 trucks to assemble the stage and towers. Metallica have a crew of 130 people, plus 40 steelworkers, local hires and truck drivers. For those wondering, yes, Taylor Swift did sell out during her six-night run at SoFi Stadium earlier this summer. The concerts were attended by 420,000 ticket holders over the run, with just over 70,000 attendance at each show.
 
 Metallica's attendance record was confirmed by the Los Angeles venue, who tweeted out, "Metallica now holds the highest single-show attendance record at #SoFiStadium. Thank you for two incredible sold out nights!"
 
@@ -116,12 +84,9 @@ Oppenheimer Is Christopher Nolan's 3rd Highest Grossing Movie Ever Only Behind B
 Oppenheimer has become Christopher Nolan's third highest-grossing movie ever, with only The Dark Knight and The Dark Knight Rises ahead of it.
 Oppenheimer has surpassed Inception at the global box office and is now Christopher Nolan's third highest-grossing movie of all time. The Cillian Murphy-led biopic about J. Robert Oppenheimer has been a massive critical and commercial success since its release. The Dark Knight and The Dark Knight Rises are the only Nolan movies to have grossed more than Oppenheimer.
 
-According to Deadline, Oppenheimer will pass the $850 million at the global box office by the end of the weekend. Oppenheimer has already exceeded the nearly $838 million that Inception earned at the global box office in 2010. Oppenheimer is also slated to surpass Guardians of the Galaxy Vol. 3 as the third highest-grossing movie of 2023, with only Barbie and Super Mario Bros. ahead of it.
-As one of the most popular and celebrated movie directors in the entertainment industry, Nolan's projects generate excitement long before they are released, and Oppenheimer was no exception. Nolan strikes the perfect balance of making artistic films in a blockbuster format, making his work unique and accessible. Oppenheimer is even more accessible to a wider audience than many of Nolan's other films as a historical biopic, a story far more intimate than Dunkirk, and that doesn't rely on the mind-bending science-fiction of Inception, Interstellar, or Tenet.
+According to Deadline, Oppenheimer will pass the $850 million at the global box office by the end of the weekend. Oppenheimer has already exceeded the nearly $838 million that Inception earned at the global box office in 2010. Oppenheimer is also slated to surpass Guardians of the Galaxy Vol. 3 as the third highest-grossing movie of 2023, with only Barbie and Super Mario Bros. ahead of it. As one of the most popular and celebrated movie directors in the entertainment industry, Nolan's projects generate excitement long before they are released, and Oppenheimer was no exception. Nolan strikes the perfect balance of making artistic films in a blockbuster format, making his work unique and accessible. Oppenheimer is even more accessible to a wider audience than many of Nolan's other films as a historical biopic, a story far more intimate than Dunkirk, and that doesn't rely on the mind-bending science-fiction of Inception, Interstellar, or Tenet.
 
-Of course, the Barbenheimer hype and online discourse also helped market the movie leading up to its release. What started as a joke and source for memes became one of the movie's strongest selling points. Many viewers who normally might not have seen Oppenheimer or a Nolan movie were compelled to because of the Barbenheimer phenomenon and to make a double feature out of seeing both Barbie and Oppenheimer.
-
-The glowing reviews and good word of mouth confirmed that Oppenheimer lived up to the hype and stood on its own merits outside the Barbenheimer craze. Nolan's direction and writing, Murphy's compelling performance, and the stunning cinematography have been widely praised and helped Oppenheimer receive an extended IMAX run. Oppenheimer had all the right ingredients before and during its theatrical release to make it one of Nolan's biggest box office hits. 
+Of course, the Barbenheimer hype and online discourse also helped market the movie leading up to its release. What started as a joke and source for memes became one of the movie's strongest selling points. Many viewers who normally might not have seen Oppenheimer or a Nolan movie were compelled to because of the Barbenheimer phenomenon and to make a double feature out of seeing both Barbie and Oppenheimer. The glowing reviews and good word of mouth confirmed that Oppenheimer lived up to the hype and stood on its own merits outside the Barbenheimer craze. Nolan's direction and writing, Murphy's compelling performance, and the stunning cinematography have been widely praised and helped Oppenheimer receive an extended IMAX run. Oppenheimer had all the right ingredients before and during its theatrical release to make it one of Nolan's biggest box office hits. 
 
 
 ------------------------------------------
@@ -129,21 +94,11 @@ The glowing reviews and good word of mouth confirmed that Oppenheimer lived up t
 7.
 Typhoon Saola Churns Toward South China, Suspending Transport And Delaying The School Year
 
-Chinese state media report at least 121 passenger trains are suspending service in anticipation of the arrival of Typhoon Saola. People in areas of southern China were warned to stay away from the coastline and several cities delayed the start of the school year.
+Chinese state media report at least 121 passenger trains are suspending service in anticipation of the arrival of Typhoon Saola. People in areas of southern China were warned to stay away from the coastline and several cities delayed the start of the school year. The suspensions on key lines running from north to south as well as on regional networks will begin Thursday and continue through Sept. 6, state broadcaster CCTV reported.
 
-The suspensions on key lines running from north to south as well as on regional networks will begin Thursday and continue through Sept. 6, state broadcaster CCTV reported.
+China’s National Meteorological Center said Saola was moving toward the coast at a speed of about 9 mph and was due to make landfall Friday afternoon in the southern province of Guangzhou with sustained winds of 74 mph and gusts of up to 137 mph. The storm will then travel west down the coast into the Guangxi region before curving south out to sea between Saturday night and Sunday morning, gradually weakening as it goes. The Guangdong city of Shanwei, closest to where Saola is expected to make landfall, ordered a halt to classes, transport and most economic activity until the all-clear is sounded. Other cities, including Shantou, Shanwei, Jieyang and Chaozhou, have ordered the start of the school year to be delayed until Monday. Regional airports have also suspended flights until the storm passes.
 
-China’s National Meteorological Center said Saola was moving toward the coast at a speed of about 9 mph and was due to make landfall Friday afternoon in the southern province of Guangzhou with sustained winds of 74 mph and gusts of up to 137 mph.
-
-The storm will then travel west down the coast into the Guangxi region before curving south out to sea between Saturday night and Sunday morning, gradually weakening as it goes.
-
-The Guangdong city of Shanwei, closest to where Saola is expected to make landfall, ordered a halt to classes, transport and most economic activity until the all-clear is sounded. Other cities, including Shantou, Shanwei, Jieyang and Chaozhou, have ordered the start of the school year to be delayed until Monday. Regional airports have also suspended flights until the storm passes.
-
-The weather center has already issued a red alert for potentially destructive winds and possible flooding, with some areas expected to receive up to 8 inches of rain.
-
-Other typical safety precautions include recalling fishing boats to port and moving people who work on coastal fish and shrimp farms further inland, but no figures on evacuations were immediately released.
-
-As the storm moved closer to Hong Kong, the city's leader, John Lee, said in a Facebook post that he had requested various government departments to plan ahead and urged residents to take precautionary measures.
+The weather center has already issued a red alert for potentially destructive winds and possible flooding, with some areas expected to receive up to 8 inches of rain. Other typical safety precautions include recalling fishing boats to port and moving people who work on coastal fish and shrimp farms further inland, but no figures on evacuations were immediately released. As the storm moved closer to Hong Kong, the city's leader, John Lee, said in a Facebook post that he had requested various government departments to plan ahead and urged residents to take precautionary measures.
 
 
 ------------------------------------------
@@ -151,9 +106,29 @@ As the storm moved closer to Hong Kong, the city's leader, John Lee, said in a F
 8.
 Sharper Styling and Electric Powertrains Revitalize the Mini Countryman SUV
 
-The 2025 Countryman Electric is revealed ahead of its gasoline-powered sibling, with the official debut to happen at the 2023 IAA auto show in Munich next week.
-
-Debuting alongside a redesigned Cooper hatchback, the 2025 Countryman SUV marks a turning point for the Mini brand. Not only is it the first time that the company has released EV models ahead of their gasoline-powered counterparts, but it's also the start of a model year where every Mini model is essentially all new. 
+The 2025 Countryman Electric is revealed ahead of its gasoline-powered sibling, with the official debut to happen at the 2023 IAA auto show in Munich next week. Debuting alongside a redesigned Cooper hatchback, the 2025 Countryman SUV marks a turning point for the Mini brand. Not only is it the first time that the company has released EV models ahead of their gasoline-powered counterparts, but it's also the start of a model year where every Mini model is essentially all new. 
 
 Not to mention it's the first time the model will not wear the Cooper name, with the company opting this time around to simply call it the Mini Countryman. That simplification is part of a larger minimalist strategy with the revitalized Mini lineup, as both the Countryman and Cooper—the brand's two core models—have received design makeovers that are less visually cluttered than before.
 Mini hasn't announced when the Countryman Electric will officially go on sale in the U.S. but we suspect it'll launch here in 2024 as a 2025 model. The first models could reach Mini dealerships as early as next spring. The gasoline-powered Countryman, as well as the new Cooper hatchback, should go on sale around the same time. A third model, the upcoming Aceman electric crossover, will join the lineup as well. Mini says the Aceman will debut in April 2024, and we suspect it will get the same electric powertrains as the Countryman. 
+
+------------------------------------------
+
+9.
+Rustem Umerov: Who is Ukraine's next defence minister?
+
+Ukrainian President Volodymyr Zelensky's decision to replace his defence chief has been seen primarily as an attempt to clean up corruption. But the appointment of Rustem Umerov, a Crimean Tatar and a Muslim, is a signal that Ukraine is serious about returning Crimea, which Russia annexed from Ukraine in 2014. Speculations about the replacement of Oleksii Reznikov, Ukraine's defence minister since November 2021, have been rife for months. While personally not accused of any wrongdoing, the man by President Zelensky's side since day one of the Russian full-scale invasion was seen as unable to stop corruption penetrating his ministry. Military procurement scandals and accusations of bribery against officials at enlistment centres made him damaged goods in the eyes of Ukrainian society, currently in need of a morale boost in the wake of a slower than expected offensive. This is where Rustem Umerov comes in.
+
+The 41-year-old is a government official who for the past year headed Ukraine's State Property Fund, but is best known for negotiating with Russia and for organising successful prisoner exchanges. Not a complete unknown but not someone in the media spotlight either, he is a Crimean Tatar born in exile and an active member of this ethnic community, trying to reinstate its cultural identity and its place in the world. Most importantly for Ukrainians, he has not been accused of corruption, embezzlement or profiteering. Mr Umerov came into politics in 2019 when he ran for parliament with the reformist "Holos" party, which he later left to become a government official. Before that he worked in the private sector, first in telecoms and later in investment. In 2013, he founded a charity programme to help train Ukrainians at the prestigious Stanford University in the US. But the defining part of his identity are his Crimean Tatar roots and the role they can play in Ukraine's firm intention to return Crimea.
+
+------------------------------------------
+
+10.
+Ukraine War: Counter-offensive troops punch through Russia line, generals claim
+
+Ukrainian generals claim they have breached Russia's formidable first line of defences in the south, as the counter-offensive launched earlier this summer may be poised to gather pace.
+
+Since June, Kyiv's territorial gains have been very small - but is Ukraine finally at a turning point? "Yes, it's true," says Yuriy Sak, an advisor to Ukraine's defence minister, when asked if the breach had happened. "Little by little, I think we're gaining momentum," he said. "We are now between the first and second defensive lines," one of Ukraine's top generals in the south, Brig Gen Oleksandr Tarnavskiy told Britain's Observer newspaper.
+
+The focus of Ukraine's counter-offensive effort in recent weeks has been an expanding bridgehead around the tiny village of Robotyne, some 56km (35 miles) south-east of the city of Zaporizhzhia. Ukrainian forces raised the country's blue and yellow flag over the village more than a week ago, and are now trying to widen the gap to allow larger infantry and armoured units to pass through without coming under Russian fire. If that can be achieved, there is a chance Ukraine's offensive can gain momentum as it approaches second and third defensive lines, which may not be quite as robust as the first.
+
+A glance at the map shows a mass of overlapping, complex Russian defensive lines, complete with minefields, tank traps and trenches. Some of them converge at Verbove.   

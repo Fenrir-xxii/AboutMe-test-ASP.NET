@@ -9,10 +9,17 @@
 }
 @* @model NewsItem; *@
 
+@section Styles{
+    <style>
+        tr th{
+            text-align: center;
+        }
+    </style>
+}
 
 <div class="container">
     <div class="row-mt-5">
-        <div class="col-md-6 d-flex flex-column">
+        <div class="col-md-8 d-flex flex-column">
             <div>
                 <a class="btn btn-outline-primary mt-5 mb-5" href="/News/AddNews">Add News</a>
                 <table class="table table-hover table-bordered">
@@ -20,8 +27,8 @@
                         <tr>
                             <th>Picture</th>
                             <th>Title</th>
-                            <th>CreatedAt</th>
-                            <th>Buttons</th>
+                            <th>Date</th>
+                            <th>Controllers</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -35,14 +42,14 @@
                                     }
                                 </td>
                                 <td>@newsItem.Title</td>
-                                <td>@newsItem.CreatedAt</td>
+                                <td>@newsItem.CreatedAt.ToString("dd.MM.yyyy")</td>
                                 <td>
                                     <div class="d-flex">
                                         <a class="btn btn-outline-primary" href="/News/EditNews/@newsItem.Id">Edit</a>&nbsp;
                                         <form method="post" action="/News/DeleteNews/@newsItem.Id">
                                             <button class="btn btn-outline-warning">Delete</button>
                                         </form>&nbsp;
-                                        <a class="btn btn-outline-primary" href="/News/ShowMore/@newsItem.Id">Show</a>
+                                        <a class="btn btn-outline-info" href="/News/ShowMore/@newsItem.Id">Show</a>
                                     </div>
 
                                 </td>
