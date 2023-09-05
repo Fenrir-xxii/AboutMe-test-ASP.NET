@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication2_AboutMe.Models;
 
 namespace WebApplication2_AboutMe.Controllers;
-
+//[Authorize]
 public class NewsController : Controller
 {
 	private readonly SiteContext _siteContext;
@@ -14,32 +15,21 @@ public class NewsController : Controller
 		_siteContext = context;
         _webHostEnvironment = hostEnvironment;
 	}
+	[Authorize]
 	public IActionResult Index()
 	{
-        //var news = new List<NewsItem> {
-        //	new NewsItem
-        //	{
-        //		Title = "news#1",
-        //		FullDescription = "fjkljdnfkgsjdfng;klsdjfng" ,
-        //		CreatedAt = DateTime.Now,
-        //	},
-        //	new NewsItem
-        //	{
-        //		Title = "news#2",
-        //		FullDescription = "ergrthtyjhgjkhjkghjkghj",
-        //		CreatedAt = new DateTime(2023, 01, 01)
-        //          },
-        //      };
         var news = _siteContext.News.ToList();
         ViewData["News"] = news;
         return View();
 	}
-    [HttpGet]
+	[Authorize]
+	[HttpGet]
     public IActionResult AddNews()
     {
         return View(new NewsItem());
     }
-    [HttpPost]
+	[Authorize]
+	[HttpPost]
     public IActionResult AddNews([FromForm] NewsItem news, IFormFile? image)
     {
         if (!ModelState.IsValid)
@@ -70,12 +60,14 @@ public class NewsController : Controller
         _siteContext.SaveChanges();
         return RedirectToAction("Index");
     }
+	[Authorize]
 	[HttpGet]
 	public IActionResult EditNews(int id)
 	{
 		var news = _siteContext.News.First(x => x.Id == id);
 		return View(news);
 	}
+	[Authorize]
 	[HttpPost]
 	public IActionResult EditNews(int id, [FromForm] NewsItem form, IFormFile? image)
 	{
@@ -122,7 +114,8 @@ public class NewsController : Controller
         ViewData["News"] = news;
         return View(news);
     }
-    [HttpPost]
+	[Authorize]
+	[HttpPost]
     public IActionResult DeleteNews(int id)
     {
         var news = _siteContext.News.First(x => x.Id == id);

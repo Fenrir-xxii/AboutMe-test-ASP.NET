@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApplication2_AboutMe.Models;
@@ -11,6 +12,21 @@ builder.Services.AddDbContext<SiteContext>(options =>
     //SQLitePCL.Batteries.Init();
 });
 
+builder.Services.AddIdentity<User, IdentityRole<int>>(options =>
+{
+	options.SignIn.RequireConfirmedPhoneNumber = false;
+	options.SignIn.RequireConfirmedAccount = false;
+	options.SignIn.RequireConfirmedEmail = false;
+
+	options.Password.RequiredLength = 3;
+	options.Password.RequiredUniqueChars = 0;
+	options.Password.RequireNonAlphanumeric = false;
+	options.Password.RequireDigit = false;
+	options.Password.RequireLowercase = false;
+	options.Password.RequireUppercase = false;
+})
+	.AddRoles<IdentityRole<int>>()
+	.AddEntityFrameworkStores<SiteContext>();
 
 builder.Services.AddMvc();
 builder.Services.AddControllersWithViews();
@@ -19,6 +35,9 @@ builder.Services.AddScoped<PersonInfoService>(x =>
 	return new PersonInfoService("personInfo.json");
 });
 var app = builder.Build();
+
+app.UseAuthentication(); // 1
+app.UseAuthorization();  // 2
 
 app.MapControllerRoute(name: "aboutMe", pattern: "{controller=AboutMe}/{action=AboutMe}");
 app.MapControllerRoute(name: "skills", pattern: "{controller=AboutMe}/{action=Skills}");
