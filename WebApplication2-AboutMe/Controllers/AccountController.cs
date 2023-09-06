@@ -43,7 +43,7 @@ public class AccountController : Controller
 			ModelState.AddModelError(nameof(form.Login), "sign in fail");
 			return View(form);
 		}
-		return Redirect("/");
+		return Redirect("/News/Index");
 	}
 	[HttpGet]
 	public async Task<IActionResult> Register()
