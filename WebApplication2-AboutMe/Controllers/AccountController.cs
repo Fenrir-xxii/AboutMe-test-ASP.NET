@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication2_AboutMe.Models;
 using WebApplication2_AboutMe.Models.Forms;
@@ -85,6 +86,14 @@ public class AccountController : Controller
 			ModelState.AddModelError(nameof(form.Login), "Invalid password");
 			return View(form);
 		}
+		return Redirect("/");
+	}
+	[HttpPost]
+	[Authorize]
+	public async Task<IActionResult> Logout()
+	{
+		
+		await _signInManager.SignOutAsync();
 		return Redirect("/");
 	}
 }

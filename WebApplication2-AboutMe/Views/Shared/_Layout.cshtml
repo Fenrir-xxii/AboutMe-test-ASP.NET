@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@ViewData["Title"]</title>
     <link href="/libraries/bootstrap/bootstrap-5.0.2-dist/css/bootstrap.css" rel="stylesheet" />
+	<link href="~/libraries/sweetalert/package/dist/sweetalert2.css" rel="stylesheet" />
+	@RenderSection("Links", required: false)
 	<style>
 
 		.navbar .navbar-nav .nav-item .nav-link {
@@ -24,10 +26,10 @@
     @RenderSection("Styles", required: false)
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #8e8eed;">
+	@* <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #8e8eed;"> *@
 	<div class="container-fluid" style="padding:0px;">
 		@* <nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #8e8eed;"> *@
-			
+			<nav class="navbar navbar-expand-lg navbar-light sticky-top" style="background-color: #8e8eed;">
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -41,16 +43,39 @@
 						<a class="nav-link" href="/News/AllNews">Recent News</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/News/Index">News Control Panel</a>
+						<a class="nav-link" href="/Map/Index">Map</a>
 					</li>
+					@if (User.Identity.IsAuthenticated)
+					{
+						<li class="nav-item">
+							<a class="nav-link" href="/News/Index">News Control Panel</a>
+						</li>
+					}
 				</ul>
 			</div>
+			<div class="d-flex">
+				@if (User.Identity.IsAuthenticated)
+				{
+					<a class="text-warning text-uppercase badge bg-primary fs-5 border border-1 border-warning">@User.Identity.Name</a>
+					@* <h2 class="text-warning text-uppercase badge bg-secondary">@User.Identity.Name</h2> *@
+					<a>&nbsp;</a>
+					@* <a class="btn btn-outline-warning" id="showAlert1" href="/Account/Logout">Logout</a> *@
+					<a class="btn btn-outline-warning" id="showAlert1">Logout</a>
+				}
+				else
+				{
+					<a class="btn btn-outline-warning" href="/Account/Login">Login</a>
+				}
+			</div>
+			<div>&nbsp;</div>
 		</nav>
 	</div>
     @RenderBody()
 
     <script src="/libraries/bootstrap/bootstrap-5.0.2-dist/js/bootstrap.bundle.js"></script>
     <script src="/libraries/jquery/jquery-3.7.0.js"></script>
+	<script src="~/libraries/sweetalert/package/dist/sweetalert2.all.js"></script>
+	<script src="~/local/js/swalOnLogout.js"></script>
     @RenderSection("Scripts", required: false)
 
 
