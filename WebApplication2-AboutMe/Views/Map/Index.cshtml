@@ -5,7 +5,9 @@
 @{
     Layout = "_Layout";
     ViewData["Title"] = "Map";
-    
+    // var mapMarkers = ViewData["Mapmarkers"] as List<MapMarker>; 
+    // var mapMarkers = ViewData["MapMarkers"] as string;
+
 }
 
     @section Links{
@@ -33,5 +35,34 @@
                     attribution: '© OpenStreetMap'
                 }).addTo(map);
             </script>
+            <script src="~/local/js/placeExistingMapMarkers.js"></script>
+   @*  <script>
+        console.log("ADD markers script");
+            if (@mapMarkers != null) {
+                var markers = JSON.parse(@mapMarkers);
+                console.log("markers", markers);
+            }
+            markers.forEach(element => {
+                var marker = L.marker([element.Latitude, element.Longitude], { title: element.Title }).addTo(map);
+                console.log("added marker");
+            })
+
+    </script> *@
+    <script src="~/local/js/addMapMarker.js"></script>
+   @*  <script>
+        console.log("ADD markers script");
+        var markers = [];
+        window.onload = () => {
+            if (@mapMarkers != null) {
+                var markers = JSON.parse(@mapMarkers);
+                console.log("markers", markers);
+            }
+            markers.forEach(element => {
+                var marker = L.marker([element.Latitude, element.Longitude], { title: element.Title }).addTo(map);
+                console.log("added marker");
+            })
+        };
+
+    </script> *@
      }
 }
