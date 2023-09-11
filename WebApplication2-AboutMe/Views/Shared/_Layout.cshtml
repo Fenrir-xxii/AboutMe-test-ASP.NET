@@ -43,12 +43,15 @@
 						<a class="nav-link" href="/News/AllNews">Recent News</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/Map/Index">Map</a>
+						<a class="nav-link" href="/Map/PublicMap">Public Map</a>
 					</li>
 					@if (User.Identity.IsAuthenticated)
 					{
 						<li class="nav-item">
-							<a class="nav-link" href="/News/Index">News Control Panel</a>
+							<a class="nav-link text-white" href="/News/Index">News Control Panel</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link text-white" href="/Map/Index">Map Control</a>
 						</li>
 					}
 				</ul>

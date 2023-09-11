@@ -13,19 +13,23 @@ public class MapController : Controller
 	{
 		_siteContext = siteContext;
 	}
+	[Authorize]
 	public IActionResult Index()
 	{
-        //var markerList = _siteContext.MapMarkers.ToList();
-        //var markerSerialized = Json(markerList);
-        //ViewData["MapMarkers"] = markerSerialized;
         return View();
 	}
-    [HttpGet]
+	public IActionResult PublicMap()
+	{
+		return View();
+	}
+	[Authorize]
+	[HttpGet]
     public IActionResult AddMarker()
     {
         return View(new MapMarker());
     }
-    [HttpPost]
+	[Authorize]
+	[HttpPost]
     public IActionResult AddMarker([FromBody] MapMarker marker)
     {
         if (!ModelState.IsValid)
@@ -42,13 +46,23 @@ public class MapController : Controller
     {
         return Json(_siteContext.MapMarkers.ToList());
     }
+	[Authorize]
+	[HttpGet]
+	public IActionResult GetLastMarker()
+	{
+        var lastMarker = _siteContext.MapMarkers.OrderBy(x => x.Id).LastOrDefault();
+
+		return Json(lastMarker);
+	}
+	[Authorize]
 	[HttpGet]
 	public IActionResult EditMarker(int id)
     {
         var marker = _siteContext.MapMarkers.First(x => x.Id == id);
         return View(marker);
 	}
-    [HttpPost]
+	[Authorize]
+	[HttpPost]
     public IActionResult EditMarker(int id, [FromForm] MapMarker form)
     {
         if (!ModelState.IsValid)
@@ -65,5 +79,15 @@ public class MapController : Controller
         _siteContext.SaveChanges();
         return RedirectToAction("Index");
     }
+	[Authorize]
+	[HttpDelete]
+	public IActionResult DeleteMarker(int id)
+	{
+		var marker = _siteContext.MapMarkers.First(x => x.Id == id);
+		
+		_siteContext.Remove(marker);
+		_siteContext.SaveChanges();
+		return RedirectToAction("Index");
+	}
 
 }
