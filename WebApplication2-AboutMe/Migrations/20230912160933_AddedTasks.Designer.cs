@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplication2_AboutMe.Models;
 
@@ -10,9 +11,10 @@ using WebApplication2_AboutMe.Models;
 namespace WebApplication2_AboutMe.Migrations
 {
     [DbContext(typeof(SiteContext))]
-    partial class SiteContextModelSnapshot : ModelSnapshot
+    [Migration("20230912160933_AddedTasks")]
+    partial class AddedTasks
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.21");
@@ -240,32 +242,6 @@ namespace WebApplication2_AboutMe.Migrations
                     b.ToTable("Skills");
                 });
 
-            modelBuilder.Entity("WebApplication2_AboutMe.Models.Task", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("IsCompleted")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Tasks");
-                });
-
             modelBuilder.Entity("WebApplication2_AboutMe.Models.User", b =>
                 {
                     b.Property<int>("Id")
@@ -387,17 +363,6 @@ namespace WebApplication2_AboutMe.Migrations
                     b.HasOne("WebApplication2_AboutMe.Models.PersonInfo", null)
                         .WithMany("Skills")
                         .HasForeignKey("PersonInfoId");
-                });
-
-            modelBuilder.Entity("WebApplication2_AboutMe.Models.Task", b =>
-                {
-                    b.HasOne("WebApplication2_AboutMe.Models.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("WebApplication2_AboutMe.Models.PersonInfo", b =>

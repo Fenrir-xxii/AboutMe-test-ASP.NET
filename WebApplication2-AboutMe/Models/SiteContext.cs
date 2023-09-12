@@ -14,6 +14,7 @@ public class SiteContext : IdentityDbContext<User, IdentityRole<int>, int>
 	public virtual DbSet<NewsItem> News { get; set; } = null!;
 	public override DbSet<User> Users { get; set; } = null!;
 	public virtual DbSet<MapMarker> MapMarkers { get; set; } = null!;
+	public virtual DbSet<Task> Tasks { get; set; } = null!;
 
 }
 
