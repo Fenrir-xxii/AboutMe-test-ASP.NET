@@ -19,9 +19,9 @@ public class TaskController : Controller
     }
 
     public IActionResult Index()
-	{
-		return View();
-	}
+    {
+        return View();
+    }
     [HttpGet]
     public IActionResult AddTask()
     {
@@ -46,10 +46,25 @@ public class TaskController : Controller
         return RedirectToAction("Index");
     }
     [HttpPost]
-    public IActionResult GetTasks(string date)
+    public IActionResult GetTasks([FromBody] string date)
     {
         var userId = int.Parse(_userManager.GetUserId(this.User));
         var selectedDate = DateTime.Parse(date);
         return Json(_siteContext.Tasks.Where(x => x.User.Id == userId).Where(x => x.Date == selectedDate).ToList());
     }
+    //[HttpGet("/Task/Index/{date?}")]
+    //[HttpPost]
+    //public async Task<IActionResult> GetTasks([FromBody] string date)
+    //{
+    //    var selectedDate = DateTime.Parse(date);
+    //    ViewData["SelectedDate"] = selectedDate;
+
+    //    var userId = int.Parse(_userManager.GetUserId(this.User));
+
+    //    var tasks = _siteContext.Tasks.Where(x => x.User.Id == userId).Where(x => x.Date == selectedDate).ToList();
+    //    ViewData["Tasks"] = tasks;
+
+    //    //return await System.Threading.Tasks.Task.Run(() => View("Index"));
+    //    return RedirectToAction("Index");
+//}
 }

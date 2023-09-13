@@ -4,6 +4,8 @@
 @{
     Layout = "_Layout";
     ViewData["Title"] = "To-Do List";
+    // var selectedDate = ViewData["SelectedDate"] as DateTime?;
+    // var tasks = ViewData["Tasks"] as List<WebApplication2_AboutMe.Models.Task>;
 }
 @section Links{
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/css/bootstrap-datepicker.min.css" integrity="sha512-34s5cpvaNG3BknEWSuOncX28vz97bRI59UnVtEEpFX536A7BtZSJHsDyFoCl8S7Dt2TPzcrCEoHBGeM4SUBDBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -101,7 +103,7 @@
 <div class="container">
     <div class="row">
         <div class="col-sm">
-            <div id="datepicker" data-date="09/12/2023"></div>
+            <div id="datepicker"></div>
             <input type="hidden" id="my_hidden_input">
         </div>
         <div class="col-sm">
@@ -109,7 +111,7 @@
                 Task Title:
                 <input size="50" id="taskTitle">
                 <button onclick="AddTask()">ADD</button>
-
+                @* <div>@selectedDate</div> *@
             </div>
             <div class="table-container">
                 <table id="table">
@@ -127,7 +129,26 @@
                             <th id="delete">Delete</th>
                         </tr>
                     </thead>
-                    <tbody id="tableBody"></tbody>
+                    <tbody id="tableBody">
+                       @*  @if(tasks != null)
+                        {
+                            @foreach (var task in @tasks)
+                            {
+                                <tr>
+                                    <td>
+                                    </td>
+                                    <td>@task.Title</td>
+                                    <td>
+                                        @task.Date.ToString()
+                                    </td>
+                                    <td>
+                                        X
+                                    </td>
+                                </tr>
+                            }
+                        } *@
+                       
+                    </tbody>
                 </table>
             </div>
             <div class="foot">
@@ -140,13 +161,16 @@
 
 @section Scripts{
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js" integrity="sha512-LsnSViqQyaXpD4mBBdRYeP6sRwJiJveh2ZIbW41EBrNmKxgr/LFZIiWT6yr+nycvhvauz8c2nYMhrP80YhG7Cw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script>
+    @* <script>
         $('#datepicker').datepicker();
         $('#datepicker').on('changeDate', function () {
             $('#my_hidden_input').val(
                 $('#datepicker').datepicker('getFormattedDate')
             );
         });
+    </script> *@
+    <script>
+        // location.reload()
     </script>
     <script src="~/local/js/to-do-list.js"></script>
 }

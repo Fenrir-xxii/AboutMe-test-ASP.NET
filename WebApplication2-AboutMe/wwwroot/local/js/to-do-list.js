@@ -1,16 +1,63 @@
-﻿let selectedDate = $('#datepicker').datepicker('getFormattedDate');
+﻿
 
-fetch("/Task/GetTasks", {
-    method: "post",
-    headers: {
-        'Content-Type': "application/json"
-    },
-    body: JSON.stringify("12.09.2023")
-}).then(r => r.json()).then(tasks => {
-    tasks.forEach(t => {
-        console.log(t);
+$('#datepicker').datepicker({
+    format: 'dd/mm/yyyy',
+});
+
+let selectedDate = $('#datepicker').datepicker('getFormattedDate');
+let table = document.getElementById("tableBody");
+
+$('#datepicker').on('changeDate', function () {
+    $('#my_hidden_input').val(
+        selectedDate = $('#datepicker').datepicker('getFormattedDate')
+    );
+    fetch("/Task/GetTasks", {
+        method: "POST",
+        headers: {
+            'Content-Type': "application/json"
+        },
+        body: JSON.stringify(selectedDate)
+    }).then(r => r.json()).then(tasks => {
+        table.innerHTML = ""; 
+        tasks.forEach(t => {
+            console.log(t);
+            let row = table.insertRow();
+            let checkbox = row.insertCell(0);
+            let title = row.insertCell(1);
+            title.innerHTML = t.title;
+            let date = row.insertCell(2);
+            date.innerHTML = t.date;
+            let del = row.insertCell(3);
+        })
     })
-})
+    //fetch("/Task/GetTasks", {
+    //    method: "POST",
+    //    headers: {
+    //        'Content-Type': "application/json"
+    //    },
+    //    body: JSON.stringify(selectedDate)
+    //})
+    
+});
+
+
+
+//$('.datepicker').datepicker()
+//    .on('changeDate', getTasks);
+
+//function getTasks() {
+//    fetch("/Task/GetTasks", {
+//        method: "POST",
+//        headers: {
+//            'Content-Type': "application/json"
+//        },
+//        body: JSON.stringify(selectedDate)
+//    }).then(r => r.json()).then(tasks => {
+//        tasks.forEach(t => {
+//            console.log(t);
+//        })
+//    })
+//}
 
 
 //function addListeners() {
