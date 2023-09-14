@@ -100,13 +100,13 @@
 }
 
 
-<div class="container">
+<div class="container-xl">
     <div class="row">
-        <div class="col-sm">
+        <div class="col-xs-10 col-md-3">
             <div id="datepicker"></div>
             <input type="hidden" id="my_hidden_input">
         </div>
-        <div class="col-sm">
+        <div class="col-xs-10 col-md-7">
             <div class="container">
                 Task Title:
                 <input size="50" id="taskTitle">
@@ -117,8 +117,9 @@
                 <table id="table">
                     <colgroup>
                         <col style="width:10%">
-                        <col style="width:50%">
-                        <col style="width:30%">
+                        <col style="width:45%">
+                        <col style="width:25%">
+                        <col style="width:10%">
                         <col style="width:10%">
                     </colgroup>
                     <thead>
@@ -127,26 +128,11 @@
                             <th id="title" onclick="sortTable(1)">Title</th>
                             <th id="date" onclick="sortTable(2)">Date</th>
                             <th id="delete">Delete</th>
+                            <th id="edit">Edit</th>
+
                         </tr>
                     </thead>
                     <tbody id="tableBody">
-                       @*  @if(tasks != null)
-                        {
-                            @foreach (var task in @tasks)
-                            {
-                                <tr>
-                                    <td>
-                                    </td>
-                                    <td>@task.Title</td>
-                                    <td>
-                                        @task.Date.ToString()
-                                    </td>
-                                    <td>
-                                        X
-                                    </td>
-                                </tr>
-                            }
-                        } *@
                        
                     </tbody>
                 </table>
@@ -161,16 +147,9 @@
 
 @section Scripts{
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.10.0/js/bootstrap-datepicker.min.js" integrity="sha512-LsnSViqQyaXpD4mBBdRYeP6sRwJiJveh2ZIbW41EBrNmKxgr/LFZIiWT6yr+nycvhvauz8c2nYMhrP80YhG7Cw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    @* <script>
-        $('#datepicker').datepicker();
-        $('#datepicker').on('changeDate', function () {
-            $('#my_hidden_input').val(
-                $('#datepicker').datepicker('getFormattedDate')
-            );
-        });
-    </script> *@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
     <script>
-        // location.reload()
+     
     </script>
     <script src="~/local/js/to-do-list.js"></script>
 }
