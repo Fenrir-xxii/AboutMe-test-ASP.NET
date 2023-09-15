@@ -2,6 +2,10 @@
 
 $('#datepicker').datepicker({
     format: 'dd/mm/yyyy',
+    weekStart: '1',
+    todayBtn: 'linked',
+    todayHighlight: 'true',
+    //daysOfWeekHighlighted: '[0,6]'
 });
 $("#datepicker").datepicker("setDate", new Date());
 
@@ -44,6 +48,8 @@ function showTasks() {
                             'Content-Type': "application/json"
                         },
                         body: JSON.stringify(taskId)
+                    }).then(() => {
+                        showTasks()
                     })
 
                 }
@@ -54,29 +60,80 @@ function showTasks() {
                             'Content-Type': "application/json"
                         },
                         body: JSON.stringify(taskId)
+                    }).then(() => {
+                        showTasks()
                     })
                 }
             })
             let title = row.insertCell(1);
             title.innerHTML = t.title;
+            if (t.isCompleted) {
+                title.classList.add("completed");
+            }
             title.addEventListener('dblclick', function () {
-                console.log("dblclick");
+                console.log("dblclick title");
                 Swal.fire({
                     input: 'textarea',
                     inputLabel: 'New Title of Task',
-                    //inputPlaceholder: 'Type new title of this task...',
-                    //inputAttributes: {
-                    //    'aria-label': 'Type new title of this task'
-                    //},
                     inputValue: t.title,
                     showCancelButton: true
+                }).then((inputValue) => {
+                    console.log("inputVal", inputValue);
+                    console.log("taskId", taskId);
+                    fetch(`/Task/EditTitle/${taskId}`, {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': "application/json"
+                        },
+                        body: JSON.stringify(inputValue.value)
+                    }).then(() => {
+                        showTasks();
+                    })
                 })
 
             })
 
             let date = row.insertCell(2);
             //date.innerHTML = t.date.toString();
-            date.innerHTML = moment(t.date).format('DD.MM.YYYY')
+            date.innerHTML = moment(t.date).format('DD.MM.YYYY');
+            if (t.isCompleted) {
+                date.classList.add("completed");
+            }
+            date.addEventListener('dblclick', function (event) {
+                console.log("dblclick date");
+                event.target.innerHTML = `<div class='input-group date' id='datetimepickerEdit'>
+                                        <input type='text' class="form-control" />
+                                        <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    </div>`
+
+                $('#datetimepickerEdit').datepicker({
+                    format: 'dd/mm/yyyy',
+                    weekStart: '1',
+                    todayBtn: 'linked',
+                    todayHighlight: 'true',
+                });
+                const d = new Date(`${t.date}`);
+                console.log("d", d);
+                $("#datetimepickerEdit").datepicker("setDate", d);
+                $('#datetimepickerEdit').on('changeDate', function () {
+                    let editDate = $('#datetimepickerEdit').datepicker('getFormattedDate');
+                    fetch(`/Task/EditDate/${taskId}`, {
+                        method: "POST",
+                        headers: {
+                            'Content-Type': "application/json"
+                        },
+                        body: JSON.stringify(editDate)
+                    }).then(() => {
+                        $('#datetimepickerEdit').datepicker('hide');
+                        showTasks();
+                    })
+                });
+
+
+            })
+
+
             let del = row.insertCell(3);
             del.innerHTML = `<button type="button" class="btn btn-danger">X</button>`
             del.firstChild.addEventListener('click', function () {
@@ -91,24 +148,7 @@ function showTasks() {
                 })
 
             })
-            let edit = row.insertCell(4);
-            edit.innerHTML = `<button type="button" class="btn btn-warning">E</button>`
-            edit.firstChild.addEventListener('click', function () {
-                //fetch("/Task/EditTask/", {
-                //    method: "POST",
-                //    headers: {
-                //        'Content-Type': "application/json"
-                //    },
-                //    body: JSON.stringify({
-                //        Title: taskTitle,
-                //        Date: taskDate,
-                //        IsCompleted: false
-                //    })
-                //}).then(() => {
-                //    showTasks();
-                //})
-
-            })
+           
         })
     })
 }
@@ -133,11 +173,12 @@ function AddTask() {
         })
     }).then(() => {
         //location.reload();
+        document.getElementById('taskTitle').value = "";
         showTasks();
         Swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: 'Task removed successfully',
+            title: 'Task added successfully',
             showConfirmButton: false,
             timer: 1500
         })
@@ -179,5 +220,3 @@ function removeAllCompleted() {
     });
 
 }
-
-

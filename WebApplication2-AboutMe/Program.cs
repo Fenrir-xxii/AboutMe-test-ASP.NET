@@ -52,6 +52,8 @@ app.MapControllerRoute(name: "news_editNews", pattern: "{controller=News}/{actio
 app.MapControllerRoute(name: "news_showMore", pattern: "{controller=News}/{action=ShowMore}/{id}");
 app.MapControllerRoute(name: "news_showAllNews", pattern: "{controller=News}/{action=AllNews}");
 app.MapControllerRoute(name: "news_delete", pattern: "{controller=News}/{action=DeleteNews}/{id}");
+app.MapControllerRoute(name: "tasks_editTitle", pattern: "{controller=Task}/{action=EditTitle}/{id}");
+app.MapControllerRoute(name: "tasks_editDate", pattern: "{controller=Task}/{action=EditDate}/{id}");
 
 app.UseStaticFiles();
 

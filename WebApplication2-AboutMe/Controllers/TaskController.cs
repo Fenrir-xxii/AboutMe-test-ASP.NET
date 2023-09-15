@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 using WebApplication2_AboutMe.Models;
 using Task = WebApplication2_AboutMe.Models.Task;
 
@@ -40,6 +41,7 @@ public class TaskController : Controller
         var id = int.Parse(_userManager.GetUserId(User));
         var dbUser = _siteContext.Users.FirstOrDefault(x => x.Id == id);
         task.User = dbUser;
+        task.Date = task.Date.Date;  // set time to 00:00:00
 
         _siteContext.Add(task);
         _siteContext.SaveChanges();
@@ -52,21 +54,6 @@ public class TaskController : Controller
         var selectedDate = DateTime.Parse(date);
         return Json(_siteContext.Tasks.Where(x => x.User.Id == userId).Where(x => x.Date == selectedDate).ToList());
     }
-    //[HttpGet("/Task/Index/{date?}")]
-    //[HttpPost]
-    //public async Task<IActionResult> GetTasks([FromBody] string date)
-    //{
-    //    var selectedDate = DateTime.Parse(date);
-    //    ViewData["SelectedDate"] = selectedDate;
-
-    //    var userId = int.Parse(_userManager.GetUserId(this.User));
-
-    //    var tasks = _siteContext.Tasks.Where(x => x.User.Id == userId).Where(x => x.Date == selectedDate).ToList();
-    //    ViewData["Tasks"] = tasks;
-
-    //    //return await System.Threading.Tasks.Task.Run(() => View("Index"));
-    //    return RedirectToAction("Index");
-    //}
     public async Task<User> GetCurrentUser()
     {
         return await _userManager.GetUserAsync(HttpContext.User);
@@ -107,6 +94,26 @@ public class TaskController : Controller
         _siteContext.Tasks.RemoveRange(_siteContext.Tasks.Where(x => x.User.Id == userId).Where(x => x.Date == selectedDate).Where(x => x.IsCompleted==true));
         _siteContext.SaveChanges();
 
+        return RedirectToAction("Index");
+    }
+    [HttpPost]
+    public IActionResult EditTitle(int id, [FromBody] string title)
+    {
+        var task = _siteContext.Tasks.First(x => x.Id == id);
+
+        task.Title = title;
+      
+        _siteContext.SaveChanges();
+        return RedirectToAction("Index");
+    }
+    [HttpPost]
+    public IActionResult EditDate(int id, [FromBody] string date)
+    {
+        var task = _siteContext.Tasks.First(x => x.Id == id);
+        var selectedDate = DateTime.Parse(date);
+        task.Date = selectedDate;
+
+        _siteContext.SaveChanges();
         return RedirectToAction("Index");
     }
 }

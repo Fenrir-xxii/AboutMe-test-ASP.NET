@@ -18,6 +18,7 @@
             align-items: center;
             margin: 20px;
             gap: 20px;
+            
         }
 
         .table-container {
@@ -28,27 +29,27 @@
             justify-content: center;
         }
 
-        table {
+        .my-table {
             width: 80%;
             border: 1px solid black;
             border-collapse: collapse;
         }
 
-        th, td {
+        .my-table th, td {
             border: 1px solid black;
         }
 
-        th {
+        .my-table th {
             background-color: gray;
             cursor: pointer;
             user-select: none;
         }
 
-        tr {
+        .my-table tr{
             border: 1px solid black;
         }
 
-        #checkbox::before {
+       /*  #checkbox::before {
             content: var(--svgSortedLogo1);
         }
 
@@ -58,9 +59,9 @@
 
         #date::before {
             content: var(--svgSortedLogo3);
-        }
+        } */
 
-        .sorted-asc {
+        /* .sorted-asc {
             background-color: rgb(144, 238, 144);
             font-style: italic;
         }
@@ -68,19 +69,19 @@
         .sorted-desc {
             background-color: rgb(230, 129, 129);
             font-style: italic;
-        }
+        } */
 
         label {
             margin-left: 20px;
         }
 
-        #datepicker {
+      /*   #datepicker {
             width: 180px;
         }
 
-            #datepicker > span:hover {
+        #datepicker > span:hover {
                 cursor: pointer;
-            }
+        } */
 
         .completed {
             text-decoration: line-through;
@@ -93,9 +94,9 @@
             justify-content: center;
         }
 
-        td[contenteditable=true] {
+       /*  td[contenteditable=true] {
             outline: 2px solid #0af;
-        }
+        } */
     </style>
 }
 
@@ -114,21 +115,19 @@
                 @* <div>@selectedDate</div> *@
             </div>
             <div class="table-container">
-                <table id="table">
+                <table id="table" class="my-table">
                     <colgroup>
                         <col style="width:10%">
-                        <col style="width:45%">
-                        <col style="width:25%">
-                        <col style="width:10%">
+                        <col style="width:50%">
+                        <col style="width:30%">
                         <col style="width:10%">
                     </colgroup>
                     <thead>
                         <tr>
-                            <th id="checkbox" onclick="sortTable(0)">Status</th>
-                            <th id="title" onclick="sortTable(1)">Title</th>
-                            <th id="date" onclick="sortTable(2)">Date</th>
+                            <th id="checkbox">Status</th>
+                            <th id="title">Title</th>
+                            <th id="date">Date</th>
                             <th id="delete">Delete</th>
-                            <th id="edit">Edit</th>
 
                         </tr>
                     </thead>
